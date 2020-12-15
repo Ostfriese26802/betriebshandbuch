@@ -1,0 +1,2 @@
+class Betriebssystemtyp < ApplicationRecord
+end

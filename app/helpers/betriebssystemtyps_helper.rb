@@ -1,0 +1,2 @@
+module BetriebssystemtypsHelper
+end

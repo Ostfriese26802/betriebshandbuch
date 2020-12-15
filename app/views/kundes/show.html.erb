@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @kunde.name %>
+</p>
+
+<p>
+  <strong>Kuerzel:</strong>
+  <%= @kunde.kuerzel %>
+</p>
+
+<%= link_to 'Edit', edit_kunde_path(@kunde) %> |
+<%= link_to 'Back', kundes_path %>
