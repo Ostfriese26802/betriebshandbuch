@@ -1,0 +1,26 @@
+<%= form_with(model: betriebssystem, local: true) do |form| %>
+  <% if betriebssystem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(betriebssystem.errors.count, "error") %> prohibited this betriebssystem from being saved:</h2>
+
+      <ul>
+        <% betriebssystem.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.collection_select(:betriebssystemtyp_id,Betriebssystemtyp.all,:id,:name, :selected => @betriebssystem.betriebssystemtyp_id)%> 
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

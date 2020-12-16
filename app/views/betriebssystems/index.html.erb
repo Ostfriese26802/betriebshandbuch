@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Betriebssystems</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Betriebssystemtyp</th>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @betriebssystems.each do |betriebssystem| %>
+      <tr>
+        <td><%= Betriebssystemtyp.find(betriebssystem.betriebssystemtyp_id).name %></td>
+        <td><%= betriebssystem.name %></td>
+        <td><%= link_to 'Show', betriebssystem %></td>
+        <td><%= link_to 'Edit', edit_betriebssystem_path(betriebssystem) %></td>
+        <td><%= link_to 'Destroy', betriebssystem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Betriebssystem', new_betriebssystem_path %>

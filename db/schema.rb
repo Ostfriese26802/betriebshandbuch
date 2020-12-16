@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_211617) do
+ActiveRecord::Schema.define(version: 2020_12_16_121720) do
+
+  create_table "betriebssystems", force: :cascade do |t|
+    t.integer "betriebssystemtyp_id", null: false
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["betriebssystemtyp_id"], name: "index_betriebssystems_on_betriebssystemtyp_id"
+  end
 
   create_table "betriebssystemtyps", force: :cascade do |t|
     t.string "name"
@@ -25,4 +33,5 @@ ActiveRecord::Schema.define(version: 2020_12_15_211617) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "betriebssystems", "betriebssystemtyps"
 end

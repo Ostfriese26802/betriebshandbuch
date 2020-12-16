@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Betriebssystemtyp:</strong>
+  <%= Betriebssystemtyp.find(@betriebssystem.betriebssystemtyp_id).name %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @betriebssystem.name %>
+</p>
+
+<%= link_to 'Edit', edit_betriebssystem_path(@betriebssystem) %> |
+<%= link_to 'Back', betriebssystems_path %>
