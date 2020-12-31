@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @server.name %>
+</p>
+
+<p>
+  <strong>Ip:</strong>
+  <%= @server.ip %>
+</p>
+
+<p>
+  <strong>Kunde:</strong>
+  <%= Kunde.find(@server.kunde_id).name %>
+</p>
+
+<p>
+  <strong>Betriebssystem:</strong>
+  <%= Betriebssystem.find(@server.betriebssystem_id ).name %>
+</p>
+
+<p>
+  <strong>Archiviert:</strong>
+  <%= @server.archiviert %>
+</p>
+
+<%= link_to 'Edit', edit_server_path(@server) %> |
+<%= link_to 'Back', servers_path %>

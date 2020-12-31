@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :servers
   resources :betriebssystems
   resources :betriebssystemtyps
   resources :kundes

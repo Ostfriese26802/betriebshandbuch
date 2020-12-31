@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  ip: MyString
+  kunde: one
+  betriebssystem: one
+  archiviert: false
+
+two:
+  name: MyString
+  ip: MyString
+  kunde: two
+  betriebssystem: two
+  archiviert: false
