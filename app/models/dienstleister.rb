@@ -1,0 +1,2 @@
+class Dienstleister < ApplicationRecord
+end

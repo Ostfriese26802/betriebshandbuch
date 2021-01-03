@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @dienstleister.name %>
+</p>
+
+<p>
+  <strong>Telefonnummer:</strong>
+  <%= @dienstleister.telefonnummer %>
+</p>
+
+<p>
+  <strong>Bereitschaftsnummer:</strong>
+  <%= @dienstleister.bereitschaftsnummer %>
+</p>
+
+<p>
+  <strong>Servicezeiten:</strong>
+  <%= @dienstleister.servicezeiten %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @dienstleister.email %>
+</p>
+
+<%= link_to 'Edit', edit_dienstleister_path(@dienstleister) %> |
+<%= link_to 'Back', dienstleisters_path %>

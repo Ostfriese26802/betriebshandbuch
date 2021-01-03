@@ -1,0 +1,2 @@
+class Fachgruppe < ApplicationRecord
+end

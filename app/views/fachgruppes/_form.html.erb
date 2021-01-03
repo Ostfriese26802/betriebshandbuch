@@ -1,0 +1,42 @@
+<%= form_with(model: fachgruppe, local: true) do |form| %>
+  <% if fachgruppe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fachgruppe.errors.count, "error") %> prohibited this fachgruppe from being saved:</h2>
+
+      <ul>
+        <% fachgruppe.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telefonnummer %>
+    <%= form.text_field :telefonnummer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bereitschaft %>
+    <%= form.text_field :bereitschaft %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ticketgruppe %>
+    <%= form.text_field :ticketgruppe %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

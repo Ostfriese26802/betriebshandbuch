@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_31_075720) do
+ActiveRecord::Schema.define(version: 2021_01_01_111307) do
 
   create_table "betriebssystems", force: :cascade do |t|
     t.integer "betriebssystemtyp_id", null: false
@@ -22,6 +22,26 @@ ActiveRecord::Schema.define(version: 2020_12_31_075720) do
 
   create_table "betriebssystemtyps", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "dienstleisters", force: :cascade do |t|
+    t.string "name"
+    t.string "telefonnummer"
+    t.string "bereitschaftsnummer"
+    t.text "servicezeiten"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "fachgruppes", force: :cascade do |t|
+    t.string "name"
+    t.string "telefonnummer"
+    t.string "bereitschaft"
+    t.string "email"
+    t.string "ticketgruppe"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :fachgruppes
+  resources :dienstleisters
   resources :servers
   resources :betriebssystems
   resources :betriebssystemtyps

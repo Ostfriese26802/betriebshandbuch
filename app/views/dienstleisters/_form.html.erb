@@ -1,0 +1,42 @@
+<%= form_with(model: dienstleister, local: true) do |form| %>
+  <% if dienstleister.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(dienstleister.errors.count, "error") %> prohibited this dienstleister from being saved:</h2>
+
+      <ul>
+        <% dienstleister.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telefonnummer %>
+    <%= form.text_field :telefonnummer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bereitschaftsnummer %>
+    <%= form.text_field :bereitschaftsnummer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :servicezeiten %>
+    <%= form.text_area :servicezeiten %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
