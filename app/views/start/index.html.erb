@@ -1,0 +1,7 @@
+<h1>Übersicht</h1>
+<%= @kundes.first.name %>
+<br/><br/>
+<% @kundes.each do |ku| %>
+    <%= ku.name %>(<%= ku.kuerzel %>)<br/>
+    <br/>
+<% end %>

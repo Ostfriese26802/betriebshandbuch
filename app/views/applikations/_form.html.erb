@@ -1,0 +1,32 @@
+<%= form_with(model: applikation, local: true) do |form| %>
+  <% if applikation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(applikation.errors.count, "error") %> prohibited this applikation from being saved:</h2>
+
+      <ul>
+        <% applikation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :beschreibung %>
+    <%= form.text_area :beschreibung %>
+  </div>
+
+  <div class="field">
+    <%= form.label :kunde_id %>
+    <%= form.collection_select(:kunde_id,Kunde.all,:id,:name, :selected => @applikation.kunde_id)%> 
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

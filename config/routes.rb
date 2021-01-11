@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'start/index', to: 'start#index'
+  resources :applikations
   resources :fachgruppes
   resources :dienstleisters
   resources :servers

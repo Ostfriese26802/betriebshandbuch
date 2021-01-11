@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @applikation.name %>
+</p>
+
+<p>
+  <strong>Beschreibung:</strong>
+  <%= @applikation.beschreibung %>
+</p>
+
+<p>
+  <strong>Kunde:</strong>
+  <%= Kunde.find(@applikation.kunde_id).name %>
+</p>
+
+<%= link_to 'Edit', edit_applikation_path(@applikation) %> |
+<%= link_to 'Back', applikations_path %>
