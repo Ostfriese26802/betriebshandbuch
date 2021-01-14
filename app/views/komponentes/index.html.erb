@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Komponentes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Beschreibung</th>
+      <th>Installationspfad</th>
+      <th>Port</th>
+      <th>Start</th>
+      <th>Stop</th>
+      <th>Besonderheiten</th>
+      <th>Applikation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @komponentes.each do |komponente| %>
+      <tr>
+        <td><%= komponente.name %></td>
+        <td><%= komponente.beschreibung %></td>
+        <td><%= komponente.installationspfad %></td>
+        <td><%= komponente.port %></td>
+        <td><%= komponente.start %></td>
+        <td><%= komponente.stop %></td>
+        <td><%= komponente.besonderheiten %></td>
+        <td><%= komponente.applikation_id %></td>
+        <td><%= link_to 'Show', komponente %></td>
+        <td><%= link_to 'Edit', edit_komponente_path(komponente) %></td>
+        <td><%= link_to 'Destroy', komponente, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Komponente', new_komponente_path %>

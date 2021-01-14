@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  resources :komponentes
   get 'start/index', to: 'start#index'
+  get 'start/index/:id', to: 'start#index'
+  get 'start/index/:id/:applikation_id', to: 'start#index'
   resources :applikations
   resources :fachgruppes
   resources :dienstleisters

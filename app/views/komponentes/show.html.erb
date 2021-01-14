@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @komponente.name %>
+</p>
+
+<p>
+  <strong>Beschreibung:</strong>
+  <%= @komponente.beschreibung %>
+</p>
+
+<p>
+  <strong>Installationspfad:</strong>
+  <%= @komponente.installationspfad %>
+</p>
+
+<p>
+  <strong>Port:</strong>
+  <%= @komponente.port %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @komponente.start %>
+</p>
+
+<p>
+  <strong>Stop:</strong>
+  <%= @komponente.stop %>
+</p>
+
+<p>
+  <strong>Besonderheiten:</strong>
+  <%= @komponente.besonderheiten %>
+</p>
+
+<p>
+  <strong>Applikation:</strong>
+  <%= @komponente.applikation_id %>
+</p>
+
+<%= link_to 'Edit', edit_komponente_path(@komponente) %> |
+<%= link_to 'Back', komponentes_path %>

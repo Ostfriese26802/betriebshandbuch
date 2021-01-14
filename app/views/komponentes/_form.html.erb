@@ -1,0 +1,58 @@
+<%= form_with(model: komponente, local: true) do |form| %>
+  <% if komponente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(komponente.errors.count, "error") %> prohibited this komponente from being saved:</h2>
+
+      <ul>
+        <% komponente.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :beschreibung %>
+    <%= form.text_area :beschreibung %>
+  </div>
+
+  <div class="field">
+    <%= form.label :installationspfad %>
+    <%= form.text_field :installationspfad %>
+  </div>
+
+  <div class="field">
+    <%= form.label :port %>
+    <%= form.text_field :port %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start %>
+    <%= form.text_field :start %>
+  </div>
+
+  <div class="field">
+    <%= form.label :stop %>
+    <%= form.text_field :stop %>
+  </div>
+
+  <div class="field">
+    <%= form.label :besonderheiten %>
+    <%= form.text_area :besonderheiten %>
+  </div>
+
+  <div class="field">
+    <%= form.label :applikation_id %>
+    <%= form.text_field :applikation_id %>
+    <%= form.collection_select(:applikation_id,Applikation.all,:id,:name, :selected => @komponente.applikation_id)%> 
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
