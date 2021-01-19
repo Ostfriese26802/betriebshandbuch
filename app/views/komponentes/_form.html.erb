@@ -48,7 +48,6 @@
 
   <div class="field">
     <%= form.label :applikation_id %>
-    <%= form.text_field :applikation_id %>
     <%= form.collection_select(:applikation_id,Applikation.all,:id,:name, :selected => @komponente.applikation_id)%> 
   </div>
 
