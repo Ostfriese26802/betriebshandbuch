@@ -30,14 +30,14 @@
 
     <div class="ueberschrift">Komponenten</div>
 
-    <%= @kundes.find(params[:id]).applikation.find(params[:applikation_id]).komponente.first.name %>
+    
     <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).komponente.each do |apko| %>
         <div class="komponente">
             <div class="titel">
                 Bezeichnung
             </div>
             <div class="inhalt">
-                <%= apko.name %>
+                <%= apko.name %>( <%= apko.server.name %>)
             </div>
             <div style="clear:both"></div>
             <div class="was">
@@ -83,9 +83,29 @@
             </div>
             <div style="clear:both"></div>
             <div >&nbsp;</div>
-        
+            
         </div>
     <% end %>
+
+
+    <div class="ueberschrift">Server</div>
+
+    <div class="server">
+        <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).komponente.all.select(:server_id).distinct.each do  |apser| %>
+           
+            <div class="name">
+                <%= Server.find(apser.server_id).name %>
+            </div>
+            <div class="ip">
+                <%= Server.find(apser.server_id).ip %>
+            </div>
+            <div class="betriebssystem">
+                <%= Betriebssystem.find( Server.find(apser.server_id).betriebssystem_id ).name %>
+            </div>
+            <div style="clear:both"></div>
+        <% end %>
+
+    </div>
 <% end %>
 
 

@@ -90,3 +90,24 @@ a {
    text-align: left;
    
 }
+
+.server{
+   width: 100%;
+   font-size: 12px;
+
+ }
+
+ .server .name{
+    width: 20%;
+    float: left;
+ }
+
+ .server .ip{
+    width: 20%;
+    float: left;
+ }
+
+ .server .betriebssystem{
+   width: 20%;
+   float: left;
+}
