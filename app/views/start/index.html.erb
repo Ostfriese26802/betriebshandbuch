@@ -28,6 +28,24 @@
     <div class="beschreibung"><%= @kundes.find(params[:id]).applikation.find(params[:applikation_id]).beschreibung %></div>
 
 
+    <div class="ueberschrift">Refernzen / Links</div>
+        <div class="referenz">
+            <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).referenz.each do |apre| %>
+                <div class="name">
+                    <%= apre.name %>
+                </div>
+                <div class="link">
+                    <% if apre.link.match(/^http/) %>
+                        <a href="<%= apre.link %>" target="_blank"><%= apre.link %></a>
+                    <% else %>
+                        <%= apre.link %>
+                     <% end %>                    
+                </div>
+                <div style="clear:both"></div>
+            <% end %>
+        </div>
+    
+
     <div class="ueberschrift">Komponenten</div>
 
     

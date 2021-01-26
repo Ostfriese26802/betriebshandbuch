@@ -1,0 +1,32 @@
+<%= form_with(model: referenz, local: true) do |form| %>
+  <% if referenz.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(referenz.errors.count, "error") %> prohibited this referenz from being saved:</h2>
+
+      <ul>
+        <% referenz.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :link %>
+    <%= form.text_field :link %>
+  </div>
+
+  <div class="field">
+    <%= form.label :applikation_id %>
+    <%= form.collection_select(:applikation_id,Applikation.all,:id,:name, :selected => @referenz.applikation_id)%> 
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

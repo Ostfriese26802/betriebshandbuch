@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @referenz.name %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @referenz.link %>
+</p>
+
+<p>
+  <strong>Applikation:</strong>
+  <%= @referenz.applikation_id %>
+</p>
+
+<%= link_to 'Edit', edit_referenz_path(@referenz) %> |
+<%= link_to 'Back', referenzs_path %>

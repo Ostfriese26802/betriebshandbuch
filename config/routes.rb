@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :referenzs
   resources :komponentes
   get 'start/index', to: 'start#index'
   get 'start/index/:id', to: 'start#index'

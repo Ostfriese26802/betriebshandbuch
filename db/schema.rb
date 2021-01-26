@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_20_085332) do
+ActiveRecord::Schema.define(version: 2021_01_26_074928) do
 
   create_table "applikations", force: :cascade do |t|
     t.string "name"
@@ -78,6 +78,15 @@ ActiveRecord::Schema.define(version: 2021_01_20_085332) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "referenzs", force: :cascade do |t|
+    t.string "name"
+    t.string "link"
+    t.integer "applikation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["applikation_id"], name: "index_referenzs_on_applikation_id"
+  end
+
   create_table "servers", force: :cascade do |t|
     t.string "name"
     t.string "ip"
@@ -94,6 +103,7 @@ ActiveRecord::Schema.define(version: 2021_01_20_085332) do
   add_foreign_key "betriebssystems", "betriebssystemtyps"
   add_foreign_key "komponentes", "applikations"
   add_foreign_key "komponentes", "servers"
+  add_foreign_key "referenzs", "applikations"
   add_foreign_key "servers", "betriebssystems"
   add_foreign_key "servers", "kundes"
 end
