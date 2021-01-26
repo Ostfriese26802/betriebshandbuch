@@ -8,9 +8,9 @@
 
         <div class="kunde">
             <%= link_to ku.name, controller: "start", action: "index", id: ku.id %>
-           
+
             <% #wenn die Param id mit der des Kunden übereinstimmt werden Applikationen ausgegeben
-            if params[:id].to_i == ku.id %>   
+            if params[:id].to_i == ku.id %>
                 <% ku.applikation.each do |kuap| %>
                     <div class="appl">
                         <%= link_to kuap.name , controller: "start", action: "index",  id: ku.id , applikation_id: kuap.id %>
@@ -39,23 +39,23 @@
                         <a href="<%= apre.link %>" target="_blank"><%= apre.link %></a>
                     <% else %>
                         <%= apre.link %>
-                     <% end %>                    
+                     <% end %>
                 </div>
                 <div style="clear:both"></div>
             <% end %>
         </div>
-    
+
 
     <div class="ueberschrift">Komponenten</div>
 
-    
+
     <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).komponente.each do |apko| %>
         <div class="komponente">
             <div class="titel">
                 Bezeichnung
             </div>
             <div class="inhalt">
-                <%= apko.name %>( <%= apko.server.name %>)
+                <%= apko.name %> (<%= apko.server.name %>)
             </div>
             <div style="clear:both"></div>
             <div class="was">
@@ -101,7 +101,7 @@
             </div>
             <div style="clear:both"></div>
             <div >&nbsp;</div>
-            
+
         </div>
     <% end %>
 
@@ -110,7 +110,7 @@
 
     <div class="server">
         <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).komponente.all.select(:server_id).distinct.each do  |apser| %>
-           
+
             <div class="name">
                 <%= Server.find(apser.server_id).name %>
             </div>
@@ -137,7 +137,7 @@
         <%= ku.applikation.first.name %>
         <% ku.applikation.each do |kuap| %>
             Name: <%= kuap.name %><br/>
-            Beschreibung: 
+            Beschreibung:
             <%= kuap.beschreibung %>
             <br/><br/>
         <% end %>
