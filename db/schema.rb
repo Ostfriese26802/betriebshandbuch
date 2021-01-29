@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_26_074928) do
+ActiveRecord::Schema.define(version: 2021_01_29_221806) do
 
   create_table "applikations", force: :cascade do |t|
     t.string "name"
@@ -78,6 +78,24 @@ ActiveRecord::Schema.define(version: 2021_01_26_074928) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "monitorings", force: :cascade do |t|
+    t.string "name"
+    t.string "werte"
+    t.text "beschreibung"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "monitoringzusks", force: :cascade do |t|
+    t.integer "server_id"
+    t.integer "komponente_id"
+    t.string "werte"
+    t.integer "monitoring_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["monitoring_id"], name: "index_monitoringzusks_on_monitoring_id"
+  end
+
   create_table "referenzs", force: :cascade do |t|
     t.string "name"
     t.string "link"
@@ -103,6 +121,7 @@ ActiveRecord::Schema.define(version: 2021_01_26_074928) do
   add_foreign_key "betriebssystems", "betriebssystemtyps"
   add_foreign_key "komponentes", "applikations"
   add_foreign_key "komponentes", "servers"
+  add_foreign_key "monitoringzusks", "monitorings"
   add_foreign_key "referenzs", "applikations"
   add_foreign_key "servers", "betriebssystems"
   add_foreign_key "servers", "kundes"
