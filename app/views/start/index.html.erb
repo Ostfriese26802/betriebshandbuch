@@ -1,26 +1,3 @@
-<h1>Übersicht</h1>
-
-
-
- <div class="menue">
-    <% #Aufbau des menüs
-    @kundes.each do |ku| %>
-
-        <div class="kunde">
-            <%= link_to ku.name, controller: "start", action: "index", id: ku.id %>
-
-            <% #wenn die Param id mit der des Kunden übereinstimmt werden Applikationen ausgegeben
-            if params[:id].to_i == ku.id %>
-                <% ku.applikation.each do |kuap| %>
-                    <div class="appl">
-                        <%= link_to kuap.name , controller: "start", action: "index",  id: ku.id , applikation_id: kuap.id %>
-                    </div>
-                <% end %>
-            <% end %>
-        </div>
-    <% end %>
-</div>
-<div class="mitte">
 
 <% if params[:applikation_id].present?  %>
     <div class="ueberschrift"><%= @kundes.find(params[:id]).applikation.find(params[:applikation_id]).name %></div>
@@ -127,19 +104,5 @@
 <% end %>
 
 
-</div>
-<div style="clear:both"></div>
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<% @kundes.each do |ku| %>
-    <h2><%= ku.name %>(<%= ku.kuerzel %>)</h2><br/>
-    <h3>Applikationen</h3>
-        <%= ku.applikation.first.name %>
-        <% ku.applikation.each do |kuap| %>
-            Name: <%= kuap.name %><br/>
-            Beschreibung:
-            <%= kuap.beschreibung %>
-            <br/><br/>
-        <% end %>
-    <br/>
-<% end %>
+

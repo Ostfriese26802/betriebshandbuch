@@ -10,7 +10,11 @@
   </head>
 
   <body>
-  
-    <%= yield %>
+    <%= render "layouts/navbar" %>
+
+    <div class="mitte">
+      <%= yield %>
+    </div>
+  <div style="clear:both"></div>
   </body>
 </html>

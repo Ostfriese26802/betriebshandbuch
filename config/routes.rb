@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :monitoringzusks
+  #get 'monitoringzusks/new/:komponente_id/:server_id', to 'monitoringzusks#new'
+  get 'monitoringzusks/new/k/:komponente_id', to: 'monitoringzusks#new'
+  get 'monitoringzusks/new/s/:server_id', to: 'monitoringzusks#new'
+  resources :monitorings
   resources :referenzs
   resources :komponentes
   get 'start/index', to: 'start#index'

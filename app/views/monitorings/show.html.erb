@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @monitoring.name %>
+</p>
+
+<p>
+  <strong>Werte:</strong>
+  <%= @monitoring.werte %>
+</p>
+
+<p>
+  <strong>Beschreibung:</strong>
+  <%= @monitoring.beschreibung %>
+</p>
+
+<%= link_to 'Edit', edit_monitoring_path(@monitoring) %> |
+<%= link_to 'Back', monitorings_path %>

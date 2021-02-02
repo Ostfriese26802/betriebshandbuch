@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  server_id: 1
+  komponente_id: 1
+  werte: MyString
+  monitoring: one
+
+two:
+  server_id: 1
+  komponente_id: 1
+  werte: MyString
+  monitoring: two

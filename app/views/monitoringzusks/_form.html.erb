@@ -1,0 +1,49 @@
+<%= form_with(model: monitoringzusk, local: true) do |form| %>
+  <% if monitoringzusk.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(monitoringzusk.errors.count, "error") %> prohibited this monitoringzusk from being saved:</h2>
+
+      <ul>
+        <% monitoringzusk.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+<% #wurde eine Server ID übergeben dann das Feld darstellen
+  if params.has_key?(:server_id)  %>
+    <div class="field">
+      <%= form.label :server_id %>
+      
+      <%= form.collection_select(:server_id,Server.all,:id,:name, :selected => params[:server_id])%>
+    </div>
+<% end %>
+
+<% #wurde eine Komponente ID übergeben dann das Feld darstellen
+  if params.has_key?(:komponente_id)  %>
+  <div class="field">
+    <%= form.label :komponente_id %>
+    
+    <%= form.collection_select(:komponente_id,Komponente.all,:id,:name, :selected => params[:komponente_id])%>
+  </div>
+<% end %>
+  <div class="field">
+    <%= form.label :monitoring_id %>
+    <%= form.collection_select(:monitoring_id,Monitoring.all,:id,:name_mit_werte, :selected => @monitoringzusk.monitoring_id)%> 
+  </div>
+  
+  <div class="field">
+    <%= form.label :werte %>
+    <%= form.text_field :werte %>
+  </div>
+
+  
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

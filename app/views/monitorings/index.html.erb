@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Monitorings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Werte</th>
+      <th>Beschreibung</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @monitorings.each do |monitoring| %>
+      <tr>
+        <td><%= monitoring.name %></td>
+        <td><%= monitoring.werte %></td>
+        <td><%= monitoring.beschreibung %></td>
+        <td><%= link_to 'Show', monitoring %></td>
+        <td><%= link_to 'Edit', edit_monitoring_path(monitoring) %></td>
+        <td><%= link_to 'Destroy', monitoring, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Monitoring', new_monitoring_path %>
