@@ -91,6 +91,11 @@ a {
    
 }
 
+.komponente .monitoring{
+   width: 20%;
+   float: left;
+}
+
 .server{
    width: 100%;
    font-size: 12px;
@@ -108,6 +113,11 @@ a {
  }
 
  .server .betriebssystem{
+   width: 20%;
+   float: left;
+}
+
+.server  .monitoring{
    width: 20%;
    float: left;
 }

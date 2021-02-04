@@ -5,26 +5,32 @@ class MonitoringzusksController < ApplicationController
   # GET /monitoringzusks.json
   def index
     @monitoringzusks = Monitoringzusk.all
+    @kundes = Kunde.all
   end
 
   # GET /monitoringzusks/1
   # GET /monitoringzusks/1.json
   def show
+    @kundes = Kunde.all
   end
 
   # GET /monitoringzusks/new
   def new
     @monitoringzusk = Monitoringzusk.new
+    @kundes = Kunde.all
   end
 
   # GET /monitoringzusks/1/edit
   def edit
+    @kundes = Kunde.all
   end
 
   # POST /monitoringzusks
   # POST /monitoringzusks.json
   def create
+    @kundes = Kunde.all
     @monitoringzusk = Monitoringzusk.new(monitoringzusk_params)
+
 
     respond_to do |format|
       if @monitoringzusk.save

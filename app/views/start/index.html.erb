@@ -77,6 +77,24 @@
                 <%= apko.besonderheiten %>
             </div>
             <div style="clear:both"></div>
+            <div style="font-weight:bold">Monitoring</div>
+            
+
+            <% #prüfen ob es einen Eintrag gibt 
+            if  Monitoringzusk.find_by_komponente_id( apko.id ).present? %>
+                <div class="monitoring">
+                    <%= Monitoring.find( Monitoringzusk.find_by_komponente_id( apko.id ).monitoring_id ).name %>        
+                </div>
+                <div class="monitoring">
+                    <%= Monitoring.find( Monitoringzusk.find_by_komponente_id( apko.id ).monitoring_id ).werte %>        
+                </div>
+                <div class="monitoring">
+                    <%= Monitoringzusk.find_by_komponente_id( apko.id ).werte %>        
+                </div>
+            <% end %>
+
+
+            <div style="clear:both"></div>
             <div >&nbsp;</div>
 
         </div>
@@ -98,6 +116,25 @@
                 <%= Betriebssystem.find( Server.find(apser.server_id).betriebssystem_id ).name %>
             </div>
             <div style="clear:both"></div>
+
+             <div style="font-weight:bold">Monitoring</div>
+            
+
+            <% #prüfen ob es einen Eintrag gibt 
+            if  Monitoringzusk.find_by_server_id( apser.server_id ).present? %>
+                <div class="monitoring">
+                    <%= Monitoring.find( Monitoringzusk.find_by_server_id( apser.server_id ).monitoring_id ).name %>        
+                </div>
+                <div class="monitoring">
+                    <%= Monitoring.find( Monitoringzusk.find_by_server_id( apser.server_id ).monitoring_id ).werte %>        
+                </div>
+                <div class="monitoring">
+                    <%= Monitoringzusk.find_by_server_id( apser.server_id ).werte %>        
+                </div>
+            <% end %>
+
+             <div style="clear:both"></div>
+             <br/>
         <% end %>
 
     </div>
