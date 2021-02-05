@@ -1,4 +1,5 @@
 
+
 <% if params[:applikation_id].present?  %>
     <div class="ueberschrift"><%= @kundes.find(params[:id]).applikation.find(params[:applikation_id]).name %></div>
 
@@ -77,8 +78,9 @@
                 <%= apko.besonderheiten %>
             </div>
             <div style="clear:both"></div>
-            <div style="font-weight:bold">Monitoring</div>
-            
+            <div class="monitoringueberschrift">Monitoring</div>
+            <div class="monitoringbutton"><%= button_to "+", {:controller => "monitoringzusks", :action => "new", :komponente_id => apko.id }, params: { backurl: request.fullpath }, method: :get %></div>
+            <div style="clear:both"></div>
 
             <% #prüfen ob es einen Eintrag gibt 
             if  Monitoringzusk.find_by_komponente_id( apko.id ).present? %>
@@ -91,6 +93,8 @@
                 <div class="monitoring">
                     <%= Monitoringzusk.find_by_komponente_id( apko.id ).werte %>        
                 </div>
+
+           
             <% end %>
 
 
@@ -117,7 +121,9 @@
             </div>
             <div style="clear:both"></div>
 
-             <div style="font-weight:bold">Monitoring</div>
+             <div class="monitoringueberschrift">Monitoring</div>
+            <div class="monitoringbutton"><%= button_to "+", {:controller => "monitoringzusks", :action => "new", :server_id => apser.server_id },  method: :get %></div>
+            <div style="clear:both"></div>
             
 
             <% #prüfen ob es einen Eintrag gibt 

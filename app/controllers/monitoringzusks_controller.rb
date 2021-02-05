@@ -34,7 +34,8 @@ class MonitoringzusksController < ApplicationController
 
     respond_to do |format|
       if @monitoringzusk.save
-        format.html { redirect_to @monitoringzusk, notice: 'Monitoringzusk was successfully created.' }
+        
+        format.html { redirect_to "/start/index", notice: 'Monitoringzusk was successfully created.' }
         format.json { render :show, status: :created, location: @monitoringzusk }
       else
         format.html { render :new }
