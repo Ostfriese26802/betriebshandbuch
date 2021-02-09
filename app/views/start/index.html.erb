@@ -84,6 +84,9 @@
 
             <% #prüfen ob es einen Eintrag gibt 
             if  Monitoringzusk.find_by_komponente_id( apko.id ).present? %>
+                <%= apko.id%>
+                <% # Monitoringzusk.find_by_komponente_id( apko.id ).each do |mon| %>                
+                <% # end %>
                 <div class="monitoring">
                     <%= Monitoring.find( Monitoringzusk.find_by_komponente_id( apko.id ).monitoring_id ).name %>        
                 </div>
