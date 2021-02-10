@@ -81,24 +81,26 @@
             <div class="monitoringueberschrift">Monitoring</div>
             <div class="monitoringbutton"><%= button_to "+", {:controller => "monitoringzusks", :action => "new", :komponente_id => apko.id }, params: { backurl: request.fullpath }, method: :get %></div>
             <div style="clear:both"></div>
+            <% 
+            # Ausgabe der Werte
+            Monitoringzusk.where(komponente_id: apko.id ).each do  |apmo| %>
+                <div class="monitoring">
+                    <%= Monitoring.find( apmo.monitoring_id).name %>        
+                </div>
+                <div class="monitoring">
+                    <%= Monitoring.find( apmo.monitoring_id ).werte %>        
+                </div>
+                <div class="monitoring">
+                    <%= apmo.werte %>        
+                </div> 
+                <div style="clear:both"></div>
+            <% end %>
 
-            <% #prüfen ob es einen Eintrag gibt 
-            if  Monitoringzusk.find_by_komponente_id( apko.id ).present? %>
-                <%= apko.id%>
-                <% # Monitoringzusk.find_by_komponente_id( apko.id ).each do |mon| %>                
-                <% # end %>
-                <div class="monitoring">
-                    <%= Monitoring.find( Monitoringzusk.find_by_komponente_id( apko.id ).monitoring_id ).name %>        
-                </div>
-                <div class="monitoring">
-                    <%= Monitoring.find( Monitoringzusk.find_by_komponente_id( apko.id ).monitoring_id ).werte %>        
-                </div>
-                <div class="monitoring">
-                    <%= Monitoringzusk.find_by_komponente_id( apko.id ).werte %>        
-                </div>
+                
+                
 
            
-            <% end %>
+         
 
 
             <div style="clear:both"></div>
@@ -128,21 +130,21 @@
             <div class="monitoringbutton"><%= button_to "+", {:controller => "monitoringzusks", :action => "new", :server_id => apser.server_id },  method: :get %></div>
             <div style="clear:both"></div>
             
-
-            <% #prüfen ob es einen Eintrag gibt 
-            if  Monitoringzusk.find_by_server_id( apser.server_id ).present? %>
+            <% 
+            # Ausgabe der Werte
+            Monitoringzusk.where(server_id: apser.server_id).each do  |apmo| %>
                 <div class="monitoring">
-                    <%= Monitoring.find( Monitoringzusk.find_by_server_id( apser.server_id ).monitoring_id ).name %>        
+                    <%= Monitoring.find( apmo.monitoring_id).name %>        
                 </div>
                 <div class="monitoring">
-                    <%= Monitoring.find( Monitoringzusk.find_by_server_id( apser.server_id ).monitoring_id ).werte %>        
+                    <%= Monitoring.find( apmo.monitoring_id ).werte %>        
                 </div>
                 <div class="monitoring">
-                    <%= Monitoringzusk.find_by_server_id( apser.server_id ).werte %>        
-                </div>
+                    <%= apmo.werte %>        
+                </div> 
+                <div style="clear:both"></div>
             <% end %>
 
-             <div style="clear:both"></div>
              <br/>
         <% end %>
 
