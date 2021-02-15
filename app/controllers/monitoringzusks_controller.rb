@@ -30,13 +30,17 @@ class MonitoringzusksController < ApplicationController
   def create
     @kundes = Kunde.all
     @monitoringzusk = Monitoringzusk.new(monitoringzusk_params)
-
+    
 
     respond_to do |format|
       if @monitoringzusk.save
-        
-        format.html { redirect_to "/start/index", notice: 'Monitoringzusk was successfully created.' }
-        format.json { render :show, status: :created, location: @monitoringzusk }
+        # die Redirect_to url wird immer neu gebildet durch die mitgegebene Komponente / Server id
+        if params.has_key?(:komponente_id) 
+          format.html { redirect_to "/start/index/#{Applikation.find(Komponente.find(monitoringzusk_params[:komponente_id]).applikation_id).kunde_id}/#{Komponente.find(monitoringzusk_params[:komponente_id]).applikation_id}", notice: "Das Monitoring wurde gespeichert" }
+        else
+          format.html { redirect_to "/start/index/#{Server.find(monitoringzusk_params[:server_id]).kunde_id}/#{Komponente.find(monitoringzusk_params[:server_id]).applikation_id}", notice: "Das Monitoring wurde gespeichert" }
+        end
+          format.json { render :show, status: :created, location: @monitoringzusk }
       else
         format.html { render :new }
         format.json { render json: @monitoringzusk.errors, status: :unprocessable_entity }
