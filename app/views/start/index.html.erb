@@ -29,6 +29,7 @@
 
     <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).komponente.each do |apko| %>
         <div class="komponente">
+        <div style="border:1px dotted #000000">
             <div class="titel">
                 Bezeichnung
             </div>
@@ -87,12 +88,15 @@
                 <div class="monitoring">
                     <%= Monitoring.find( apmo.monitoring_id).name %>        
                 </div>
-                <div class="monitoring">
-                    <%= Monitoring.find( apmo.monitoring_id ).werte %>        
+                <div class="monitoring" >
+                    <%= Monitoring.find( apmo.monitoring_id ).werte %>     
+                    
                 </div>
                 <div class="monitoring">
                     <%= apmo.werte %>        
                 </div> 
+                <%= button_to "DEL",{:controller => "monitoringzusks", :action => "destroy", :id => apmo.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>   
+                <%= button_to "EDIT",{:controller => "monitoringzusks", :action => "edit", :id => apmo.id }, :method => :get  %>  
                 <div style="clear:both"></div>
             <% end %>
 
@@ -104,8 +108,9 @@
 
 
             <div style="clear:both"></div>
+            
+        </div>
             <div >&nbsp;</div>
-
         </div>
     <% end %>
 
@@ -114,7 +119,7 @@
 
     <div class="server">
         <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).komponente.all.select(:server_id).distinct.each do  |apser| %>
-
+            <div style="border:1px dotted #000000">
             <div class="name">
                 <%= Server.find(apser.server_id).name %>
             </div>
@@ -142,9 +147,13 @@
                 <div class="monitoring">
                     <%= apmo.werte %>        
                 </div> 
+                
+                    <%= button_to "DEL",{:controller => "monitoringzusks", :action => "destroy", :id => apmo.id }, data: { confirm: 'Are you sure?' }, :method => :delete   %>   
+                    <%= button_to "EDIT",{:controller => "monitoringzusks", :action => "edit", :id => apmo.id }, :method => :get  %>  
+                
                 <div style="clear:both"></div>
             <% end %>
-
+            </div>
              <br/>
         <% end %>
 

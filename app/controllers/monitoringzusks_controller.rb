@@ -52,8 +52,15 @@ class MonitoringzusksController < ApplicationController
   # PATCH/PUT /monitoringzusks/1.json
   def update
     respond_to do |format|
+
+      if Monitoringzusk.find(@monitoringzusk.id).server_id.nil?
+          backurl = "/start/index/#{Applikation.find(Komponente.find(@monitoringzusk.komponente_id).applikation_id).kunde_id}/#{Komponente.find(@monitoringzusk.komponente_id).applikation_id}" 
+      else
+          backurl = "/start/index/#{Server.find(@monitoringzusk.server_id).kunde_id}/#{Komponente.find(@monitoringzusk.server_id).applikation_id}" 
+      end
+
       if @monitoringzusk.update(monitoringzusk_params)
-        format.html { redirect_to @monitoringzusk, notice: 'Monitoringzusk was successfully updated.' }
+        format.html { redirect_to backurl , notice: 'Monitoringzusk was successfully updated.' }
         format.json { render :show, status: :ok, location: @monitoringzusk }
       else
         format.html { render :edit }
@@ -65,9 +72,10 @@ class MonitoringzusksController < ApplicationController
   # DELETE /monitoringzusks/1
   # DELETE /monitoringzusks/1.json
   def destroy
+    
     @monitoringzusk.destroy
     respond_to do |format|
-      format.html { redirect_to monitoringzusks_url, notice: 'Monitoringzusk was successfully destroyed.' }
+      format.html { redirect_to request.referrer , notice: 'Monitoringzusk was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
