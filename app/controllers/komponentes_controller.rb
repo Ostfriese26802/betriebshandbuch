@@ -5,11 +5,13 @@ class KomponentesController < ApplicationController
   # GET /komponentes.json
   def index
     @komponentes = Komponente.all
+    @kundes = Kunde.all
   end
 
   # GET /komponentes/1
   # GET /komponentes/1.json
   def show
+    @kundes = Kunde.all
   end
 
   # GET /komponentes/new

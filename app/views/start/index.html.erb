@@ -1,26 +1,4 @@
-<h1>Übersicht</h1>
 
-
-
- <div class="menue">
-    <% #Aufbau des menüs
-    @kundes.each do |ku| %>
-
-        <div class="kunde">
-            <%= link_to ku.name, controller: "start", action: "index", id: ku.id %>
-
-            <% #wenn die Param id mit der des Kunden übereinstimmt werden Applikationen ausgegeben
-            if params[:id].to_i == ku.id %>
-                <% ku.applikation.each do |kuap| %>
-                    <div class="appl">
-                        <%= link_to kuap.name , controller: "start", action: "index",  id: ku.id , applikation_id: kuap.id %>
-                    </div>
-                <% end %>
-            <% end %>
-        </div>
-    <% end %>
-</div>
-<div class="mitte">
 
 <% if params[:applikation_id].present?  %>
     <div class="ueberschrift"><%= @kundes.find(params[:id]).applikation.find(params[:applikation_id]).name %></div>
@@ -51,6 +29,7 @@
 
     <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).komponente.each do |apko| %>
         <div class="komponente">
+        <div style="border:1px dotted #000000">
             <div class="titel">
                 Bezeichnung
             </div>
@@ -100,8 +79,38 @@
                 <%= apko.besonderheiten %>
             </div>
             <div style="clear:both"></div>
-            <div >&nbsp;</div>
+            <div class="monitoringueberschrift">Monitoring</div>
+            <div class="monitoringbutton"><%= button_to "+", {:controller => "monitoringzusks", :action => "new", :komponente_id => apko.id }, params: { backurl: request.fullpath }, method: :get %></div>
+            <div style="clear:both"></div>
+            <% 
+            # Ausgabe der Werte
+            Monitoringzusk.where(komponente_id: apko.id ).each do  |apmo| %>
+                <div class="monitoring">
+                    <%= Monitoring.find( apmo.monitoring_id).name %>        
+                </div>
+                <div class="monitoring" >
+                    <%= Monitoring.find( apmo.monitoring_id ).werte %>     
+                    
+                </div>
+                <div class="monitoring">
+                    <%= apmo.werte %>        
+                </div> 
+                <%= button_to "DEL",{:controller => "monitoringzusks", :action => "destroy", :id => apmo.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>   
+                <%= button_to "EDIT",{:controller => "monitoringzusks", :action => "edit", :id => apmo.id }, :method => :get  %>  
+                <div style="clear:both"></div>
+            <% end %>
 
+                
+                
+
+           
+         
+
+
+            <div style="clear:both"></div>
+            
+        </div>
+            <div >&nbsp;</div>
         </div>
     <% end %>
 
@@ -110,7 +119,7 @@
 
     <div class="server">
         <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).komponente.all.select(:server_id).distinct.each do  |apser| %>
-
+            <div style="border:1px dotted #000000">
             <div class="name">
                 <%= Server.find(apser.server_id).name %>
             </div>
@@ -121,25 +130,36 @@
                 <%= Betriebssystem.find( Server.find(apser.server_id).betriebssystem_id ).name %>
             </div>
             <div style="clear:both"></div>
+
+             <div class="monitoringueberschrift">Monitoring</div>
+            <div class="monitoringbutton"><%= button_to "+", {:controller => "monitoringzusks", :action => "new", :server_id => apser.server_id },  method: :get %></div>
+            <div style="clear:both"></div>
+            
+            <% 
+            # Ausgabe der Werte
+            Monitoringzusk.where(server_id: apser.server_id).each do  |apmo| %>
+                <div class="monitoring">
+                    <%= Monitoring.find( apmo.monitoring_id).name %>        
+                </div>
+                <div class="monitoring">
+                    <%= Monitoring.find( apmo.monitoring_id ).werte %>        
+                </div>
+                <div class="monitoring">
+                    <%= apmo.werte %>        
+                </div> 
+                
+                    <%= button_to "DEL",{:controller => "monitoringzusks", :action => "destroy", :id => apmo.id }, data: { confirm: 'Are you sure?' }, :method => :delete   %>   
+                    <%= button_to "EDIT",{:controller => "monitoringzusks", :action => "edit", :id => apmo.id }, :method => :get  %>  
+                
+                <div style="clear:both"></div>
+            <% end %>
+            </div>
+             <br/>
         <% end %>
 
     </div>
 <% end %>
 
 
-</div>
-<div style="clear:both"></div>
 
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-<% @kundes.each do |ku| %>
-    <h2><%= ku.name %>(<%= ku.kuerzel %>)</h2><br/>
-    <h3>Applikationen</h3>
-        <%= ku.applikation.first.name %>
-        <% ku.applikation.each do |kuap| %>
-            Name: <%= kuap.name %><br/>
-            Beschreibung:
-            <%= kuap.beschreibung %>
-            <br/><br/>
-        <% end %>
-    <br/>
-<% end %>
+

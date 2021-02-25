@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Monitoringzusks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Server</th>
+      <th>Komponente</th>
+      <th>Werte</th>
+      <th>Monitoring</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @monitoringzusks.each do |monitoringzusk| %>
+      <tr>
+        <td><%= monitoringzusk.server_id %></td>
+        <td><%= monitoringzusk.komponente_id %></td>
+        <td><%= monitoringzusk.werte %></td>
+        <td><%= monitoringzusk.monitoring_id %></td>
+        <td><%= link_to 'Show', monitoringzusk %></td>
+        <td><%= link_to 'Edit', edit_monitoringzusk_path(monitoringzusk) %></td>
+        <td><%= link_to 'Destroy', monitoringzusk, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Monitoringzusk', new_monitoringzusk_path %>

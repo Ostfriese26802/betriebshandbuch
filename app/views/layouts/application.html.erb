@@ -10,7 +10,12 @@
   </head>
 
   <body>
-  
-    <%= yield %>
+    <%= render "layouts/navbar" %>
+
+    <div class="mitte">
+      <%= flash[:notice] %>
+      <%= yield %>
+    </div>
+  <div style="clear:both"></div>
   </body>
 </html>
