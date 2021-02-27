@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :kunde_id %>
+    <%= form.collection_select(:kunde_id,Kunde.all,:id,:name, :selected => @dienstleister.kunde_id)%> 
+  </div>
+
+  <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>

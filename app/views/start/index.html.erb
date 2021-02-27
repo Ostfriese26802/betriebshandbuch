@@ -80,7 +80,7 @@
             </div>
             <div style="clear:both"></div>
             <div class="monitoringueberschrift">Monitoring</div>
-            <div class="monitoringbutton"><%= button_to "+", {:controller => "monitoringzusks", :action => "new", :komponente_id => apko.id }, params: { backurl: request.fullpath }, method: :get %></div>
+            <div class="monitoringbutton"><%= button_to "+", {:controller => "monitoringzusks", :action => "new", :komponente_id => apko.id },  method: :get %></div>
             <div style="clear:both"></div>
             <% 
             # Ausgabe der Werte
