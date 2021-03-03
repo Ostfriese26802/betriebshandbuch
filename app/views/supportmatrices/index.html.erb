@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Supportmatrices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Applikation</th>
+      <th>Fachgruppe</th>
+      <th>Dienstleister</th>
+      <th>Was</th>
+      <th>Beschreibung</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @supportmatrices.each do |supportmatrix| %>
+      <tr>
+        <td><%= supportmatrix.applikation_id %></td>
+        <td><%= supportmatrix.fachgruppe_id %></td>
+        <td><%= supportmatrix.dienstleister_id %></td>
+        <td><%= supportmatrix.was %></td>
+        <td><%= supportmatrix.beschreibung %></td>
+        <td><%= link_to 'Show', supportmatrix %></td>
+        <td><%= link_to 'Edit', edit_supportmatrix_path(supportmatrix) %></td>
+        <td><%= link_to 'Destroy', supportmatrix, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Supportmatrix', new_supportmatrix_path %>

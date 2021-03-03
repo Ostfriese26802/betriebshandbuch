@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Applikation:</strong>
+  <%= @supportmatrix.applikation_id %>
+</p>
+
+<p>
+  <strong>Fachgruppe:</strong>
+  <%= @supportmatrix.fachgruppe_id %>
+</p>
+
+<p>
+  <strong>Dienstleister:</strong>
+  <%= @supportmatrix.dienstleister_id %>
+</p>
+
+<p>
+  <strong>Was:</strong>
+  <%= @supportmatrix.was %>
+</p>
+
+<p>
+  <strong>Beschreibung:</strong>
+  <%= @supportmatrix.beschreibung %>
+</p>
+
+<%= link_to 'Edit', edit_supportmatrix_path(@supportmatrix) %> |
+<%= link_to 'Back', supportmatrices_path %>

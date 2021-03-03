@@ -1,0 +1,46 @@
+<%= form_with(model: supportmatrix, local: true) do |form| %>
+  <% if supportmatrix.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(supportmatrix.errors.count, "error") %> prohibited this supportmatrix from being saved:</h2>
+
+      <ul>
+        <% supportmatrix.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :applikation_id %>
+    <%= form.collection_select(:applikation_id,Applikation.all,:id,:name, :selected => params[:applikation_id])%>
+  </div>
+  <% # wenn die Fachgruppen id mitgegeben wird dann 
+    if params[:was] == "fachgruppe" %>
+      <div class="field">
+        <%= form.label :fachgruppe_id %>
+        <%= form.collection_select(:fachgruppe_id,Fachgruppe.all,:id,:name, :selected => params[:fachgruppe_id])%>
+      </div>
+  <% end %>
+
+  <% # wenn die Fachgruppen id mitgegeben wird dann 
+    if params[:was] == "dienstleister"  %>
+    <div class="field">
+      <%= form.label :dienstleister_id %>
+      <%= form.collection_select(:dienstleister_id,Dienstleister.all,:id,:name, :selected => params[:dienstleister_id])%>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :was %>
+    <%= form.text_field :was %>
+  </div>
+
+  <div class="field">
+    <%= form.label :beschreibung %>
+    <%= form.text_area :beschreibung %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
