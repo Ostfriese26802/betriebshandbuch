@@ -48,7 +48,7 @@ class SupportmatricesController < ApplicationController
     @kundes = Kunde.all
     respond_to do |format|
       if @supportmatrix.update(supportmatrix_params)
-        format.html { redirect_to @supportmatrix, notice: 'Supportmatrix was successfully updated.' }
+        format.html { redirect_to "/start/index/#{Applikation.find(supportmatrix_params[:applikation_id]).kunde_id}/#{supportmatrix_params[:applikation_id]}", notice: 'Supportmatrix was successfully updated.' }
         format.json { render :show, status: :ok, location: @supportmatrix }
       else
         format.html { render :edit }
@@ -63,7 +63,7 @@ class SupportmatricesController < ApplicationController
     @kundes = Kunde.all
     @supportmatrix.destroy
     respond_to do |format|
-      format.html { redirect_to supportmatrices_url, notice: 'Supportmatrix was successfully destroyed.' }
+      format.html { redirect_to request.referrer, notice: 'Supportmatrix was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

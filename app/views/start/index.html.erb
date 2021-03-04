@@ -57,7 +57,8 @@
                 <% end %>
             </div>
             <div style="float:right">
-                     <%= button_to "edit", {:controller => "supportmatrices", :action => "edit", :id => apsu.id },  method: :get %> 
+                     <%= button_to "edit", {:controller => "supportmatrices", :action => "edit", :id => apsu.id, :was => "dienstleister" },  method: :get %> 
+                     <%= button_to "DEL",{:controller => "supportmatrices", :action => "destroy", :id => apsu.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %> 
             </div>
              <div style="clear:both;border-bottom:1px solid #000000"></div>
         <% end %>

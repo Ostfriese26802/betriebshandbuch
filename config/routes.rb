@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'monitoringzusks/new/s/:server_id', to: 'monitoringzusks#new'
   get 'supportmatrices/new/:applikation_id', to: 'supportmatrices#new'
   get 'supportmatrices/new/:applikation_id/:was', to: 'supportmatrices#new'
-
+  get 'supportmatrices/edit/:id/edit/:was', to: 'supportmatrices#edit'
   resources :monitorings
   resources :referenzs
   resources :komponentes
