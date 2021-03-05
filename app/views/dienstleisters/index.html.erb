@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Kunde</th>
       <th>Name</th>
       <th>Telefonnummer</th>
       <th>Bereitschaftsnummer</th>
@@ -17,6 +18,7 @@
   <tbody>
     <% @dienstleisters.each do |dienstleister| %>
       <tr>
+        <td><%= Kunde.find(dienstleister.kunde_id).name %></td>
         <td><%= dienstleister.name %></td>
         <td><%= dienstleister.telefonnummer %></td>
         <td><%= dienstleister.bereitschaftsnummer %></td>

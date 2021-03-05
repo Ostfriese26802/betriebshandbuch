@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Kunde:</strong>
+  <%= Kunde.find(@dienstleister.kunde_id).name %>
+</p>
+
+
+<p>
   <strong>Name:</strong>
   <%= @dienstleister.name %>
 </p>

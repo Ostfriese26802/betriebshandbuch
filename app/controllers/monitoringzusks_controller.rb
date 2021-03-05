@@ -35,7 +35,7 @@ class MonitoringzusksController < ApplicationController
     respond_to do |format|
       if @monitoringzusk.save
         # die Redirect_to url wird immer neu gebildet durch die mitgegebene Komponente / Server id
-        if params.has_key?(:komponente_id) 
+        if monitoringzusk_params[:server_id].nil?
           format.html { redirect_to "/start/index/#{Applikation.find(Komponente.find(monitoringzusk_params[:komponente_id]).applikation_id).kunde_id}/#{Komponente.find(monitoringzusk_params[:komponente_id]).applikation_id}", notice: "Das Monitoring wurde gespeichert" }
         else
           format.html { redirect_to "/start/index/#{Server.find(monitoringzusk_params[:server_id]).kunde_id}/#{Komponente.find(monitoringzusk_params[:server_id]).applikation_id}", notice: "Das Monitoring wurde gespeichert" }

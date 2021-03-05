@@ -23,7 +23,49 @@
             <% end %>
         </div>
 
+    <div class="ueberschrift">Supportmatrix</div>
+    
+    <%= button_to "Dienstleister +", {:controller => "supportmatrices", :action => "new", :applikation_id => params[:applikation_id], :was => "dienstleister" },  method: :get %>
+        <%= button_to "Fachgruppe +", {:controller => "supportmatrices", :action => "new", :applikation_id => params[:applikation_id], :was => "fachgruppe" },  method: :get %>
+   <div class="supportmatrix"> 
+            <div class="was" style="font-weight:bold">Was</div>
+            <div class="beschreibung" style="font-weight:bold">Beschreibung</div>
+             <div class="kontakt" style="font-weight:bold">Kontakt</div>
+             <div style="clear:both;border-bottom:1px solid #000000"></div>
+        <% Supportmatrix.where(applikation_id: params[:applikation_id]).each do |apsu| %>
+            <div class="was">
+                <%= apsu.was %>
+            </div>
+            <div class="beschreibung">
+                <%= apsu.beschreibung %>
+                
+            </div>
+            <div class="kontakt">
+                <% # wenn Dienstleister nicht gesetzt ist wird die Fachruppe aufgegeben
+                    if apsu.dienstleister_id.nil? %>
+                    <%= Fachgruppe.find(apsu.fachgruppe_id).name %><br/>
+                    Tel: <%= Fachgruppe.find(apsu.fachgruppe_id).telefonnummer %><br/>
+                    Ber: <%= Fachgruppe.find(apsu.fachgruppe_id).bereitschaft %><br/>
+                    Mail: <%= Fachgruppe.find(apsu.fachgruppe_id).email %><br/>
+                    Ticketgruppe: <%= Fachgruppe.find(apsu.fachgruppe_id).ticketgruppe %>
+                <% else %>
+                    <%= Dienstleister.find(apsu.dienstleister_id).name %><br/>
+                    Tel: <%= Dienstleister.find(apsu.dienstleister_id).telefonnummer %><br/>
+                    Ber: <%= Dienstleister.find(apsu.dienstleister_id).bereitschaftsnummer %><br/>
+                    Mail: <%= Dienstleister.find(apsu.dienstleister_id).email %><br/>
+                    Servicezeiten: <%= Dienstleister.find(apsu.dienstleister_id).servicezeiten %>
+                <% end %>
+            </div>
+            <div style="float:right">
+                     <%= button_to "edit", {:controller => "supportmatrices", :action => "edit", :id => apsu.id, :was => "dienstleister" },  method: :get %> 
+                     <%= button_to "DEL",{:controller => "supportmatrices", :action => "destroy", :id => apsu.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %> 
+            </div>
+             <div style="clear:both;border-bottom:1px solid #000000"></div>
+        <% end %>
+       
+    </div>
 
+     
     <div class="ueberschrift">Komponenten</div>
 
 
@@ -80,7 +122,7 @@
             </div>
             <div style="clear:both"></div>
             <div class="monitoringueberschrift">Monitoring</div>
-            <div class="monitoringbutton"><%= button_to "+", {:controller => "monitoringzusks", :action => "new", :komponente_id => apko.id }, params: { backurl: request.fullpath }, method: :get %></div>
+            <div class="monitoringbutton"><%= button_to "+", {:controller => "monitoringzusks", :action => "new", :komponente_id => apko.id },  method: :get %></div>
             <div style="clear:both"></div>
             <% 
             # Ausgabe der Werte
