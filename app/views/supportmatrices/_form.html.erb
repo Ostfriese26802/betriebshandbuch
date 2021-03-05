@@ -15,7 +15,7 @@
     <%= form.label :applikation_id %>
     <%= form.collection_select(:applikation_id,Applikation.all,:id,:name, :selected => params[:applikation_id])%>
   </div>
-  <%= @supportmatrix.dienstleister_id %>
+ 
   <% # wenn die Fachgruppen id mitgegeben wird dann 
     if params[:was] == "fachgruppe"   %>
       <div class="field">
@@ -28,7 +28,7 @@
     if params[:was] == "dienstleister"   %>
     <div class="field">
       <%= form.label :dienstleister_id %>
-      <%= form.collection_select(:dienstleister_id,Dienstleister.all,:id,:name, :selected => params[:dienstleister_id])%>
+      <%= form.collection_select(:dienstleister_id,Dienstleister.where(kunde_id: Applikation.find(params[:applikation_id]).kunde_id),:id,:name, :selected => params[:dienstleister_id])%>
     </div>
   <% end %>
   <div class="field">
