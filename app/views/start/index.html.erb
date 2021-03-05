@@ -7,6 +7,7 @@
 
 
     <div class="ueberschrift">Refernzen / Links</div>
+    <%= button_to "+", {:controller => "referenzs", :action => "new", :applikation_id => params[:applikation_id] },  method: :get %>
         <div class="referenz">
             <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).referenz.each do |apre| %>
                 <div class="name">

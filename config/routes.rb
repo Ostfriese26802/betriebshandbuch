@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'supportmatrices/edit/:id/edit/:was', to: 'supportmatrices#edit'
   resources :monitorings
   resources :referenzs
+  get 'referenzs/new/:applikation_id', to: 'referenzs#new'
   resources :komponentes
   get 'start/index', to: 'start#index'
   get 'start/index/:id', to: 'start#index'

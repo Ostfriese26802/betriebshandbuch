@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+  
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :applikation_id %>
-    <%= form.collection_select(:applikation_id,Applikation.all,:id,:name, :selected => @referenz.applikation_id)%> 
+    <%= form.collection_select(:applikation_id,Applikation.where(id: params[:applikation_id]),:id,:name, :selected => @referenz.applikation_id)%> 
   </div>
 
   <div class="actions">
