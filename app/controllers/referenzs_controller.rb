@@ -48,7 +48,7 @@ class ReferenzsController < ApplicationController
     @kundes = Kunde.all
     respond_to do |format|
       if @referenz.update(referenz_params)
-        format.html { redirect_to @referenz, notice: 'Referenz was successfully updated.' }
+        format.html { redirect_to "/start/index/#{Applikation.find(referenz_params[:applikation_id]).kunde_id}/#{referenz_params[:applikation_id]}", notice: 'Referenz was successfully updated.' }
         format.json { render :show, status: :ok, location: @referenz }
       else
         format.html { render :edit }
@@ -63,7 +63,7 @@ class ReferenzsController < ApplicationController
     @kundes = Kunde.all
     @referenz.destroy
     respond_to do |format|
-      format.html { redirect_to referenzs_url, notice: 'Referenz was successfully destroyed.' }
+      format.html { redirect_to request.referrer, notice: 'Referenz was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

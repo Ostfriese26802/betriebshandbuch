@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :monitorings
   resources :referenzs
   get 'referenzs/new/:applikation_id', to: 'referenzs#new'
+  get 'referenzs/:id/edit/:applikation_id', to: 'referenzs#edit'
   resources :komponentes
   get 'start/index', to: 'start#index'
   get 'start/index/:id', to: 'start#index'

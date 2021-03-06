@@ -8,6 +8,7 @@
 
     <div class="ueberschrift">Refernzen / Links</div>
     <%= button_to "+", {:controller => "referenzs", :action => "new", :applikation_id => params[:applikation_id] },  method: :get %>
+    
         <div class="referenz">
             <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).referenz.each do |apre| %>
                 <div class="name">
@@ -19,6 +20,12 @@
                     <% else %>
                         <%= apre.link %>
                      <% end %>
+                </div>
+                <div style="float:right;">
+                    <%= button_to "edit", {:controller => "referenzs", :action => "edit", :id => apre.id, :applikation_id => params[:applikation_id] },  method: :get %> 
+                </div>
+                <div style="float:right;">
+                    <%= button_to "DEL",{:controller => "referenzs", :action => "destroy", :id => apre.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %> 
                 </div>
                 <div style="clear:both"></div>
             <% end %>
