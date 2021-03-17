@@ -4,26 +4,31 @@ class ServersController < ApplicationController
   # GET /servers
   # GET /servers.json
   def index
+    @kundes = Kunde.all
     @servers = Server.all
   end
 
   # GET /servers/1
   # GET /servers/1.json
   def show
+    @kundes = Kunde.all
   end
 
   # GET /servers/new
   def new
+    @kundes = Kunde.all
     @server = Server.new
   end
 
   # GET /servers/1/edit
   def edit
+    @kundes = Kunde.all
   end
 
   # POST /servers
   # POST /servers.json
   def create
+    @kundes = Kunde.all
     @server = Server.new(server_params)
 
     respond_to do |format|
@@ -40,6 +45,7 @@ class ServersController < ApplicationController
   # PATCH/PUT /servers/1
   # PATCH/PUT /servers/1.json
   def update
+    @kundes = Kunde.all
     respond_to do |format|
       if @server.update(server_params)
         format.html { redirect_to @server, notice: 'Server was successfully updated.' }
@@ -54,6 +60,7 @@ class ServersController < ApplicationController
   # DELETE /servers/1
   # DELETE /servers/1.json
   def destroy
+    @kundes = Kunde.all
     @server.destroy
     respond_to do |format|
       format.html { redirect_to servers_url, notice: 'Server was successfully destroyed.' }

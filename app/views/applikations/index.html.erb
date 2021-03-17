@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Applikations</h1>
-
 <table>
   <thead>
     <tr>
@@ -13,14 +12,25 @@
   </thead>
 
   <tbody>
-    <% @applikations.each do |applikation| %>
+
+    <%
+    
+      @applikations.where(kunde_id: params[:kunde_id]).each do |applikation| 
+    
+    %>
       <tr>
         <td><%= applikation.name %></td>
         <td><%= applikation.beschreibung %></td>
         <td><%= Kunde.find(applikation.kunde_id).name %></td>
         <td><%= link_to 'Show', applikation %></td>
         <td><%= link_to 'Edit', edit_applikation_path(applikation) %></td>
-        <td><%= link_to 'Destroy', applikation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%  # wenn es angehängte Komponenten gibt kann die Applikation niht gelöscht werden 
+            if  applikation.komponente.count  != 0 %>
+           <%= link_to 'Destroy', applikation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% else %>
+            Es gibt noch Komponenten
+          <% end %>
       </tr>
     <% end %>
   </tbody>

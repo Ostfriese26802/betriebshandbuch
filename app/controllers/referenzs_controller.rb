@@ -33,7 +33,7 @@ class ReferenzsController < ApplicationController
 
     respond_to do |format|
       if @referenz.save
-        format.html { redirect_to @referenz, notice: 'Referenz was successfully created.' }
+        format.html { redirect_to "/start/index/#{Applikation.find(referenz_params[:applikation_id]).kunde_id}/#{referenz_params[:applikation_id]}", notice: 'Referenz was successfully created.' }
         format.json { render :show, status: :created, location: @referenz }
       else
         format.html { render :new }

@@ -1,12 +1,12 @@
 
-
-<% if params[:applikation_id].present?  %>
+<% if params[:applikation_id].present? && params[:id].present? %>
+    <%= button_to "edit", {:controller => "applikations", :action => "edit", :id => params[:applikation_id] },  method: :get %> 
     <div class="ueberschrift"><%= @kundes.find(params[:id]).applikation.find(params[:applikation_id]).name %></div>
 
     <div class="beschreibung"><%= @kundes.find(params[:id]).applikation.find(params[:applikation_id]).beschreibung %></div>
 
 
-    <div class="ueberschrift">Refernzen / Links</div>
+    <div class="ueberschrift">Referenzen / Links</div>
     <%= button_to "+", {:controller => "referenzs", :action => "new", :applikation_id => params[:applikation_id] },  method: :get %>
     
         <div class="referenz">
@@ -208,6 +208,11 @@
         <% end %>
 
     </div>
+<% else %>
+<%= button_to "Applikation hinzufügen", {:controller => "applikations", :action => "new", :kunde_id => params[:id] },  method: :get %>
+<%= button_to "Applikation Übersicht", {:controller => "applikations", :action => "index", :kunde_id => params[:id] },  method: :get %>
+<%= button_to "Server hinzufügen", {:controller => "servers", :action => "new", :kunde_id => params[:id] },  method: :get %>
+<%= button_to "Server Übersicht", {:controller => "servers", :action => "index", :kunde_id => params[:id] },  method: :get %>
 <% end %>
 
 

@@ -16,9 +16,13 @@ Rails.application.routes.draw do
   get 'start/index/:id', to: 'start#index'
   get 'start/index/:id/:applikation_id', to: 'start#index'
   resources :applikations
+  get 'applikations/index/:kunde_id', to: 'applikations#index'
+  get 'applikations/new/:kunde_id', to: 'applikations#new'
   resources :fachgruppes
   resources :dienstleisters
   resources :servers
+  get 'servers/index/:kunde_id', to: 'servers#index'
+  get 'servers/new/:kunde_id', to: 'servers#new'
   resources :betriebssystems
   resources :betriebssystemtyps
   resources :kundes
