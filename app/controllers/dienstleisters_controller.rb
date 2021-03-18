@@ -33,7 +33,7 @@ class DienstleistersController < ApplicationController
 
     respond_to do |format|
       if @dienstleister.save
-        format.html { redirect_to @dienstleister, notice: 'Dienstleister was successfully created.' }
+        format.html { redirect_to "/dienstleisters/index/#{dienstleister_params[:kunde_id]}", notice: 'Dienstleister was successfully created.' }
         format.json { render :show, status: :created, location: @dienstleister }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class DienstleistersController < ApplicationController
     @kundes = Kunde.all
     respond_to do |format|
       if @dienstleister.update(dienstleister_params)
-        format.html { redirect_to @dienstleister, notice: 'Dienstleister was successfully updated.' }
+        format.html { redirect_to "/dienstleisters/index/#{dienstleister_params[:kunde_id]}", notice: 'Dienstleister was successfully updated.' }
         format.json { render :show, status: :ok, location: @dienstleister }
       else
         format.html { render :edit }
@@ -63,7 +63,7 @@ class DienstleistersController < ApplicationController
     @kundes = Kunde.all
     @dienstleister.destroy
     respond_to do |format|
-      format.html { redirect_to dienstleisters_url, notice: 'Dienstleister was successfully destroyed.' }
+      format.html { redirect_to request.referer, notice: 'Dienstleister was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

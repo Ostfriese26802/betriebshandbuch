@@ -14,9 +14,10 @@
   <tbody>
 
     <%
-    
-      @applikations.where(kunde_id: params[:kunde_id]).each do |applikation| 
-    
+      
+        @applikations.where(kunde_id: params[:kunde_id]).each do |applikation| 
+     
+     
     %>
       <tr>
         <td><%= applikation.name %></td>
@@ -26,7 +27,7 @@
         <td><%= link_to 'Edit', edit_applikation_path(applikation) %></td>
         <td>
           <%  # wenn es angehängte Komponenten gibt kann die Applikation niht gelöscht werden 
-            if  applikation.komponente.count  != 0 %>
+            if  applikation.komponente.count  == 0 %>
            <%= link_to 'Destroy', applikation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% else %>
             Es gibt noch Komponenten

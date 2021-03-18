@@ -63,7 +63,7 @@ class ApplikationsController < ApplicationController
     @kundes = Kunde.all
     @applikation.destroy
     respond_to do |format|
-      format.html { redirect_to applikations_url, notice: 'Applikation was successfully destroyed.' }
+      format.html { redirect_to request.referer, notice: 'Applikation was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'applikations/new/:kunde_id', to: 'applikations#new'
   resources :fachgruppes
   resources :dienstleisters
+  get 'dienstleisters/index/:kunde_id', to: 'dienstleisters#index'
+  get 'dienstleisters/new/:kunde_id', to: 'dienstleisters#new'
   resources :servers
   get 'servers/index/:kunde_id', to: 'servers#index'
   get 'servers/new/:kunde_id', to: 'servers#new'
