@@ -9,14 +9,22 @@ Rails.application.routes.draw do
   get 'supportmatrices/edit/:id/edit/:was', to: 'supportmatrices#edit'
   resources :monitorings
   resources :referenzs
+  get 'referenzs/new/:applikation_id', to: 'referenzs#new'
+  get 'referenzs/:id/edit/:applikation_id', to: 'referenzs#edit'
   resources :komponentes
   get 'start/index', to: 'start#index'
   get 'start/index/:id', to: 'start#index'
   get 'start/index/:id/:applikation_id', to: 'start#index'
   resources :applikations
+  get 'applikations/index/:kunde_id', to: 'applikations#index'
+  get 'applikations/new/:kunde_id', to: 'applikations#new'
   resources :fachgruppes
   resources :dienstleisters
+  get 'dienstleisters/index/:kunde_id', to: 'dienstleisters#index'
+  get 'dienstleisters/new/:kunde_id', to: 'dienstleisters#new'
   resources :servers
+  get 'servers/index/:kunde_id', to: 'servers#index'
+  get 'servers/new/:kunde_id', to: 'servers#new'
   resources :betriebssystems
   resources :betriebssystemtyps
   resources :kundes

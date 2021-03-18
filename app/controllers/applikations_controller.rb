@@ -5,30 +5,35 @@ class ApplikationsController < ApplicationController
   # GET /applikations.json
   def index
     @applikations = Applikation.all
+    @kundes = Kunde.all
   end
 
   # GET /applikations/1
   # GET /applikations/1.json
   def show
+    @kundes = Kunde.all
   end
 
   # GET /applikations/new
   def new
     @applikation = Applikation.new
+    @kundes = Kunde.all
   end
 
   # GET /applikations/1/edit
   def edit
+    @kundes = Kunde.all
   end
 
   # POST /applikations
   # POST /applikations.json
   def create
+    @kundes = Kunde.all
     @applikation = Applikation.new(applikation_params)
 
     respond_to do |format|
       if @applikation.save
-        format.html { redirect_to @applikation, notice: 'Applikation was successfully created.' }
+        format.html { redirect_to "/start/index/#{applikation_params[:kunde_id]}/#{@applikation.id}" , notice: 'Applikation was successfully created.' }
         format.json { render :show, status: :created, location: @applikation }
       else
         format.html { render :new }
@@ -40,9 +45,10 @@ class ApplikationsController < ApplicationController
   # PATCH/PUT /applikations/1
   # PATCH/PUT /applikations/1.json
   def update
+    @kundes = Kunde.all
     respond_to do |format|
       if @applikation.update(applikation_params)
-        format.html { redirect_to @applikation, notice: 'Applikation was successfully updated.' }
+        format.html { redirect_to "/start/index/#{applikation_params[:kunde_id]}/#{@applikation.id}", notice: 'Applikation was successfully updated.' }
         format.json { render :show, status: :ok, location: @applikation }
       else
         format.html { render :edit }
@@ -54,9 +60,10 @@ class ApplikationsController < ApplicationController
   # DELETE /applikations/1
   # DELETE /applikations/1.json
   def destroy
+    @kundes = Kunde.all
     @applikation.destroy
     respond_to do |format|
-      format.html { redirect_to applikations_url, notice: 'Applikation was successfully destroyed.' }
+      format.html { redirect_to request.referer, notice: 'Applikation was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

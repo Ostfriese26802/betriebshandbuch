@@ -3,7 +3,8 @@
     @kundes.each do |ku| %>
 
         <div class="kunde">
-            <%= link_to ku.name, controller: "start", action: "index", id: ku.id %>
+            
+            <%= link_to ku.name, "/start/index/#{ku.id}" %>
 
             <% #wenn die Param id mit der des Kunden übereinstimmt werden Applikationen ausgegeben
             if params[:id].to_i == ku.id %>
@@ -21,5 +22,5 @@
         Administratives
     </div>
     <%= link_to "Fachgruppen", controller: "fachgruppes", action: "index"  %><br/>
-    <%= link_to "Dienstleister", controller: "dienstleisters", action: "index"  %>
+    <%= link_to "Kunden", controller: "kundes", action: "index"  %><br/>
 </div>

@@ -15,7 +15,7 @@
   </thead>
 
   <tbody>
-    <% @servers.each do |server| %>
+    <% @servers.where(kunde_id: params[:kunde_id]).each do |server| %>
       <tr>
         <td><%= server.name %></td>
         <td><%= server.ip %></td>
@@ -24,7 +24,13 @@
         <td><%= server.archiviert %></td>
         <td><%= link_to 'Show', server %></td>
         <td><%= link_to 'Edit', edit_server_path(server) %></td>
-        <td><%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <% #wenn es noch angehängte Komponenten gibt darf der Server nicht gelöscht werden
+            if Komponente.where(server_id: server.id).count == 0 %>
+          <%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% else %>
+            Es gibt noch verbundene Komponenten
+          <% end %>
       </tr>
     <% end %>
   </tbody>

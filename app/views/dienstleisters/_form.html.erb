@@ -11,9 +11,16 @@
     </div>
   <% end %>
 
+
+  
+
   <div class="field">
     <%= form.label :kunde_id %>
-    <%= form.collection_select(:kunde_id,Kunde.all,:id,:name, :selected => @dienstleister.kunde_id)%> 
+    <% if params[:kunde_id].nil? %>
+      <%= form.collection_select(:kunde_id,Kunde.all,:id,:name, :selected => @dienstleister.kunde_id)%> 
+    <% else %>
+      <%= form.collection_select(:kunde_id,Kunde.all,:id,:name, :selected => params[:kunde_id])%> 
+    <% end %>
   </div>
 
   <div class="field">
