@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @techbenutzer.name %>
+</p>
+
+<p>
+  <strong>Kennwort:</strong>
+  <%= @techbenutzer.kennwort %>
+</p>
+
+<p>
+  <strong>Applikation:</strong>
+  <%= @techbenutzer.applikation_id %>
+</p>
+
+<%= link_to 'Edit', edit_techbenutzer_path(@techbenutzer) %> |
+<%= link_to 'Back', techbenutzers_path %>

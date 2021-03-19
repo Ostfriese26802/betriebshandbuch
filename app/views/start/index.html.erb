@@ -208,6 +208,31 @@
         <% end %>
 
     </div>
+
+
+    <div class="ueberschrift">Techniche Benutzer</div>
+    <div class="techbenutzer">
+        <div class="name">
+                Name
+            </div>
+            <div class="kennwort">
+                Kennwort
+            </div >
+            <div style="clear:both"></div>
+        <% # ausgabe der Technischen Benutzer
+            Techbenutzer.where(applikation_id: params[:applikation_id]).each do |apte|
+        %>
+            <div class="name">
+                <%= apte.name %>
+            </div>
+            <div class="kennwort">
+                <%= apte.kennwort %>
+            </div >
+            <div style="clear:both"></div>
+        <% end %>
+
+    </div>
+    
 <% else %>
 <%= button_to "Applikation hinzufügen", {:controller => "applikations", :action => "new", :kunde_id => params[:id] },  method: :get %>
 <%= button_to "Applikation Übersicht", {:controller => "applikations", :action => "index", :kunde_id => params[:id] },  method: :get %>

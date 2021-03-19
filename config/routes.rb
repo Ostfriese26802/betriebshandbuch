@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :techbenutzers
   resources :supportmatrices
   resources :monitoringzusks
   #get 'monitoringzusks/new/:komponente_id/:server_id', to 'monitoringzusks#new'
