@@ -12,8 +12,14 @@
 
 <p>
   <strong>Applikation:</strong>
-  <%= @techbenutzer.applikation_id %>
+  <%= Applikation.find(@techbenutzer.applikation_id).name %>
 </p>
+
+<p>
+  <strong>Beschreibung:</strong>
+  <%= @techbenutzer.beschreibung %>
+</p>
+
 
 <%= link_to 'Edit', edit_techbenutzer_path(@techbenutzer) %> |
 <%= link_to 'Back', techbenutzers_path %>

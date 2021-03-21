@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_19_142952) do
+ActiveRecord::Schema.define(version: 2021_03_21_134748) do
 
   create_table "applikations", force: :cascade do |t|
     t.string "name"
@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 2021_03_19_142952) do
     t.integer "applikation_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "beschreibung"
     t.index ["applikation_id"], name: "index_techbenutzers_on_applikation_id"
   end
 

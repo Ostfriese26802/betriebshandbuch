@@ -26,6 +26,11 @@
     <%= form.collection_select(:applikation_id,Applikation.all,:id,:name, :selected => @techbenutzer.applikation_id)%> 
   </div>
 
+  <div class="field">
+    <%= form.label :beschreibung %>
+    <%= form.text_area :beschreibung %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

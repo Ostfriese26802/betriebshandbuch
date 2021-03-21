@@ -78,6 +78,6 @@ class TechbenutzersController < ApplicationController
     
     # Only allow a list of trusted parameters through.
     def techbenutzer_params
-      params.require(:techbenutzer).permit(:name, :kennwort, :applikation_id)
+      params.require(:techbenutzer).permit(:name, :kennwort, :applikation_id, :beschreibung)
     end
 end

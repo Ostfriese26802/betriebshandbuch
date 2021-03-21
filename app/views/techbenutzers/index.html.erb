@@ -8,6 +8,7 @@
       <th>Name</th>
       <th>Kennwort</th>
       <th>Applikation</th>
+      <th>Beschreibung</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= techbenutzer.name %></td>
         <td><%= techbenutzer.kennwort %></td>
         <td><%= Applikation.find(techbenutzer.applikation_id).name %></td>
+         <td><%= techbenutzer.beschreibung %></td>
         <td><%= link_to 'Show', techbenutzer %></td>
         <td><%= link_to 'Edit', edit_techbenutzer_path(techbenutzer) %></td>
         <td><%= link_to 'Destroy', techbenutzer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
