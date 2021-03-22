@@ -211,6 +211,7 @@
 
 
     <div class="ueberschrift">Techniche Benutzer</div>
+        <%= button_to "+", {:controller => "techbenutzers", :action => "new", :applikation_id => params[:applikation_id] },  method: :get %> 
     <div class="techbenutzer">
         <div class="name">
                 Name
@@ -226,10 +227,25 @@
                 <%= apte.name %>
             </div>
             <div class="kennwort">
-                <%= apte.kennwort %>
+                <% 
+                    # wenn das Kennwort http enthält dann wird es als Link eingebunden
+                if apte.kennwort.match(/^http/) %>
+                        <a href="<%= apte.kennwort %>" target="_blank"><%= apte.kennwort %></a>
+                <% else %>
+                        <%= apte.kennwort %>
+                <% end %>
+                
             </div >
             <div class="beschreibung">
                 <%= apte.beschreibung %>
+            </div>
+            <div style="float:left;">
+                <%= button_to "EDIT",{:controller => "techbenutzers", :action => "edit", :id => apte.id }, :method => :get  %>  
+               
+            </div>
+            <div style="float:left;">
+                
+                <%= button_to "DEL",{:controller => "techbenutzers", :action => "destroy", :id => apte.id }, data: { confirm: 'Are you sure?' }, :method => :delete   %>   
             </div>
             <div style="clear:both"></div>
         <% end %>

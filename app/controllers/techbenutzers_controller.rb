@@ -33,7 +33,7 @@ class TechbenutzersController < ApplicationController
 
     respond_to do |format|
       if @techbenutzer.save
-        format.html { redirect_to @techbenutzer, notice: 'Techbenutzer was successfully created.' }
+        format.html { redirect_to "/start/index/#{Applikation.find(@techbenutzer.applikation_id).kunde_id}/#{@techbenutzer.applikation_id}", notice: 'Techbenutzer was successfully created.' }
         format.json { render :show, status: :created, location: @techbenutzer }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class TechbenutzersController < ApplicationController
     @kundes = Kunde.all
     respond_to do |format|
       if @techbenutzer.update(techbenutzer_params)
-        format.html { redirect_to @techbenutzer, notice: 'Techbenutzer was successfully updated.' }
+        format.html { redirect_to "/start/index/#{Applikation.find(@techbenutzer.applikation_id).kunde_id}/#{@techbenutzer.applikation_id}", notice: 'Techbenutzer was successfully updated.' }
         format.json { render :show, status: :ok, location: @techbenutzer }
       else
         format.html { render :edit }
@@ -63,7 +63,7 @@ class TechbenutzersController < ApplicationController
     @kundes = Kunde.all
     @techbenutzer.destroy
     respond_to do |format|
-      format.html { redirect_to techbenutzers_url, notice: 'Techbenutzer was successfully destroyed.' }
+      format.html { redirect_to request.referer, notice: 'Techbenutzer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

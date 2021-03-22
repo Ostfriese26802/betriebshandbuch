@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :applikation_id %>
-    <%= form.collection_select(:applikation_id,Applikation.all,:id,:name, :selected => @techbenutzer.applikation_id)%> 
+    <%= form.collection_select(:applikation_id,Applikation.all,:id,:name, :selected => params[:applikation_id])%> 
   </div>
 
   <div class="field">
