@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @stufe.name %>
+</p>
+
+<p>
+  <strong>Beschreibung:</strong>
+  <%= @stufe.beschreibung %>
+</p>
+
+<p>
+  <strong>Kunde:</strong>
+  <%= Kunde.find(@stufe.kunde_id).name %>
+</p>
+
+<%= link_to 'Edit', edit_stufe_path(@stufe) %> |
+<%= link_to 'Back', stuves_path %>
