@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_27_104848) do
+ActiveRecord::Schema.define(version: 2021_03_21_134748) do
 
   create_table "applikations", force: :cascade do |t|
     t.string "name"
@@ -130,6 +130,16 @@ ActiveRecord::Schema.define(version: 2021_02_27_104848) do
     t.index ["applikation_id"], name: "index_supportmatrices_on_applikation_id"
   end
 
+  create_table "techbenutzers", force: :cascade do |t|
+    t.string "name"
+    t.string "kennwort"
+    t.integer "applikation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "beschreibung"
+    t.index ["applikation_id"], name: "index_techbenutzers_on_applikation_id"
+  end
+
   add_foreign_key "applikations", "kundes"
   add_foreign_key "betriebssystems", "betriebssystemtyps"
   add_foreign_key "dienstleisters", "kundes"
@@ -140,4 +150,5 @@ ActiveRecord::Schema.define(version: 2021_02_27_104848) do
   add_foreign_key "servers", "betriebssystems"
   add_foreign_key "servers", "kundes"
   add_foreign_key "supportmatrices", "applikations"
+  add_foreign_key "techbenutzers", "applikations"
 end
