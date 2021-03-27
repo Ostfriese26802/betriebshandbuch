@@ -34,7 +34,7 @@ class StuvesController < ApplicationController
 
     respond_to do |format|
       if @stufe.save
-        format.html { redirect_to @stufe, notice: 'Stufe was successfully created.' }
+        format.html { redirect_to "/stuves/index/#{@stufe.kunde_id}", notice: 'Stufe was successfully created.' }
         format.json { render :show, status: :created, location: @stufe }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class StuvesController < ApplicationController
     @kundes = Kunde.all
     respond_to do |format|
       if @stufe.update(stufe_params)
-        format.html { redirect_to @stufe, notice: 'Stufe was successfully updated.' }
+        format.html { redirect_to "/stuves/index/#{@stufe.kunde_id}", notice: 'Stufe was successfully updated.' }
         format.json { render :show, status: :ok, location: @stufe }
       else
         format.html { render :edit }
@@ -64,7 +64,7 @@ class StuvesController < ApplicationController
     @kundes = Kunde.all
     @stufe.destroy
     respond_to do |format|
-      format.html { redirect_to stuves_url, notice: 'Stufe was successfully destroyed.' }
+      format.html { redirect_to request.referer , notice: 'Stufe was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

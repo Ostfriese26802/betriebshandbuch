@@ -19,8 +19,15 @@
         <td><%= monitoring.werte %></td>
         <td><%= monitoring.beschreibung %></td>
         <td><%= link_to 'Show', monitoring %></td>
-        <td><%= link_to 'Edit', edit_monitoring_path(monitoring) %></td>
-        <td><%= link_to 'Destroy', monitoring, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <% if  Monitoringzusk.where(monitoring_id: monitoring.id).count == 0 %>
+            <%= link_to 'Edit', edit_monitoring_path(monitoring) %>
+          <% end %>
+        </td>
+        <td>
+          <% if  Monitoringzusk.where(monitoring_id: monitoring.id).count == 0 %>
+           <%= link_to 'Destroy', monitoring, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
       </tr>
     <% end %>
   </tbody>

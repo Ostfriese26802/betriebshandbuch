@@ -73,142 +73,145 @@
        
     </div>
 
-     
-    <div class="ueberschrift">Komponenten</div>
-
-
-    <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).komponente.each do |apko| %>
-        <div class="komponente">
-        <div style="border:1px dotted #000000">
-            <div class="titel">
-                Bezeichnung
-            </div>
-            <div class="inhalt">
-                <%= apko.name %> (<%= apko.server.name %>)
-            </div>
-            <div style="clear:both"></div>
-            <div class="was">
-                Beschreibung
-            </div>
-            <div class="inhalt">
-                <%= apko.beschreibung %>
-            </div>
-            <div style="clear:both"></div>
-            <div class="was">
-                Installationspfad
-            </div>
-            <div class="inhalt">
-                <%= apko.installationspfad %>
-            </div>
-            <div style="clear:both"></div>
-            <div class="was">
-                Port
-            </div>
-            <div class="inhalt">
-                <%= apko.port %>
-            </div>
-            <div style="clear:both"></div>
-            <div class="was">
-                Start
-            </div>
-            <div class="inhalt">
-                <%= apko.start %>
-            </div>
-            <div style="clear:both"></div>
-            <div class="was">
-                Stop
-            </div>
-            <div class="inhalt">
-                <%= apko.stop %>
-            </div>
-            <div style="clear:both"></div>
-            <div class="was">
-                Besonderheiten
-            </div>
-            <div class="inhalt">
-                <%= apko.besonderheiten %>
-            </div>
-            <div style="clear:both"></div>
-            <div class="monitoringueberschrift">Monitoring</div>
-            <div class="monitoringbutton"><%= button_to "+", {:controller => "monitoringzusks", :action => "new", :komponente_id => apko.id },  method: :get %></div>
-            <div style="clear:both"></div>
-            <% 
-            # Ausgabe der Werte
-            Monitoringzusk.where(komponente_id: apko.id ).each do  |apmo| %>
-                <div class="monitoring">
-                    <%= Monitoring.find( apmo.monitoring_id).name %>        
-                </div>
-                <div class="monitoring" >
-                    <%= Monitoring.find( apmo.monitoring_id ).werte %>     
-                    
-                </div>
-                <div class="monitoring">
-                    <%= apmo.werte %>        
-                </div> 
-                <%= button_to "DEL",{:controller => "monitoringzusks", :action => "destroy", :id => apmo.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>   
-                <%= button_to "EDIT",{:controller => "monitoringzusks", :action => "edit", :id => apmo.id }, :method => :get  %>  
-                <div style="clear:both"></div>
-            <% end %>
-
-                
-                
-
-           
-         
-
-
-            <div style="clear:both"></div>
+    <% Stufe.where(kunde_id: params[:id]).each do |apst| %>
             
-        </div>
-            <div >&nbsp;</div>
-        </div>
-    <% end %>
 
+    <div class="stufe">
+        <div class="ueberschrift">Staging Stufe: <%= apst.name %> </div>
+        <div style="clear:both"></div>
+        <div style="clear:both"></div>
 
-    <div class="ueberschrift">Server</div>
+        <div class="ueberschrift">Komponenten</div>
+        <%= button_to "+", {:controller => "komponentes", :action => "new", :applikation_id => params[:applikation_id] },  method: :get %>
 
-    <div class="server">
-        <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).komponente.all.select(:server_id).distinct.each do  |apser| %>
+        <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).komponente.where(stufe_id: apst.id).each do |apko| %>
+            <div class="komponente">
             <div style="border:1px dotted #000000">
-            <div class="name">
-                <%= Server.find(apser.server_id).name %>
-            </div>
-            <div class="ip">
-                <%= Server.find(apser.server_id).ip %>
-            </div>
-            <div class="betriebssystem">
-                <%= Betriebssystem.find( Server.find(apser.server_id).betriebssystem_id ).name %>
-            </div>
-            <div style="clear:both"></div>
-
-             <div class="monitoringueberschrift">Monitoring</div>
-            <div class="monitoringbutton"><%= button_to "+", {:controller => "monitoringzusks", :action => "new", :server_id => apser.server_id },  method: :get %></div>
-            <div style="clear:both"></div>
-            
-            <% 
-            # Ausgabe der Werte
-            Monitoringzusk.where(server_id: apser.server_id).each do  |apmo| %>
-                <div class="monitoring">
-                    <%= Monitoring.find( apmo.monitoring_id).name %>        
+                <div class="titel">
+                    Bezeichnung
                 </div>
-                <div class="monitoring">
-                    <%= Monitoring.find( apmo.monitoring_id ).werte %>        
+                <div class="inhalt">
+                    <%= apko.name %> (<%= apko.server.name %>)  <%= button_to "e", {:controller => "komponentes", :action => "edit", :id => apko.id, :applikation_id => params[:applikation_id] },  method: :get %>
                 </div>
-                <div class="monitoring">
-                    <%= apmo.werte %>        
-                </div> 
-                
-                    <%= button_to "DEL",{:controller => "monitoringzusks", :action => "destroy", :id => apmo.id }, data: { confirm: 'Are you sure?' }, :method => :delete   %>   
-                    <%= button_to "EDIT",{:controller => "monitoringzusks", :action => "edit", :id => apmo.id }, :method => :get  %>  
-                
                 <div style="clear:both"></div>
-            <% end %>
+                <div class="was">
+                    Beschreibung
+                </div>
+                <div class="inhalt">
+                    <%= apko.beschreibung %>
+                </div>
+                <div style="clear:both"></div>
+                <div class="was">
+                    Installationspfad
+                </div>
+                <div class="inhalt">
+                    <%= apko.installationspfad %>
+                </div>
+                <div style="clear:both"></div>
+                <div class="was">
+                    Port
+                </div>
+                <div class="inhalt">
+                    <%= apko.port %>
+                </div>
+                <div style="clear:both"></div>
+                <div class="was">
+                    Start
+                </div>
+                <div class="inhalt">
+                    <%= apko.start %>
+                </div>
+                <div style="clear:both"></div>
+                <div class="was">
+                    Stop
+                </div>
+                <div class="inhalt">
+                    <%= apko.stop %>
+                </div>
+                <div style="clear:both"></div>
+                <div class="was">
+                    Besonderheiten
+                </div>
+                <div class="inhalt">
+                    <%= apko.besonderheiten %>
+                </div>
+                <div style="clear:both"></div>
+                <div class="monitoringueberschrift">Monitoring</div>
+                <div class="monitoringbutton"><%= button_to "+", {:controller => "monitoringzusks", :action => "new", :komponente_id => apko.id },  method: :get %></div>
+                <div style="clear:both"></div>
+                <% 
+                # Ausgabe der Werte
+                Monitoringzusk.where(komponente_id: apko.id ).each do  |apmo| %>
+                    <div class="monitoring">
+                        <%= Monitoring.find( apmo.monitoring_id).name %>        
+                    </div>
+                    <div class="monitoring" >
+                        <%= Monitoring.find( apmo.monitoring_id ).werte %>     
+                        
+                    </div>
+                    <div class="monitoring">
+                        <%= apmo.werte %>        
+                    </div> 
+                    <%= button_to "DEL",{:controller => "monitoringzusks", :action => "destroy", :id => apmo.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>   
+                    <%= button_to "EDIT",{:controller => "monitoringzusks", :action => "edit", :id => apmo.id }, :method => :get  %>  
+                    <div style="clear:both"></div>
+                <% end %>
+                <div style="clear:both"></div>
+                
             </div>
-             <br/>
+                <div >&nbsp;</div>
+            </div>
         <% end %>
 
-    </div>
 
+        <div class="ueberschrift">Server</div>
+
+        <div class="server">
+            <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).komponente.all.where(stufe_id: apst.id).select(:server_id).distinct.each do  |apser| %>
+                <div style="border:1px dotted #000000">
+                <div class="name">
+                    <%= Server.find(apser.server_id).name %>
+                </div>
+                <div class="ip">
+                    <%= Server.find(apser.server_id).ip %>
+                </div>
+                <div class="betriebssystem">
+                    <%= Betriebssystem.find( Server.find(apser.server_id).betriebssystem_id ).name %>
+                </div>
+                <div style="clear:both"></div>
+
+                <div class="monitoringueberschrift">Monitoring</div>
+                <div class="monitoringbutton"><%= button_to "+", {:controller => "monitoringzusks", :action => "new", :server_id => apser.server_id },  method: :get %></div>
+                <div style="clear:both"></div>
+                
+                <% 
+                # Ausgabe der Werte
+                Monitoringzusk.where(server_id: apser.server_id).each do  |apmo| %>
+                    <div class="monitoring">
+                        <%= Monitoring.find( apmo.monitoring_id).name %>        
+                    </div>
+                    <div class="monitoring">
+                        <%= Monitoring.find( apmo.monitoring_id ).werte %>        
+                    </div>
+                    <div class="monitoring">
+                        <%= apmo.werte %>        
+                    </div> 
+                    
+                        <%= button_to "DEL",{:controller => "monitoringzusks", :action => "destroy", :id => apmo.id }, data: { confirm: 'Are you sure?' }, :method => :delete   %>   
+                        <%= button_to "EDIT",{:controller => "monitoringzusks", :action => "edit", :id => apmo.id }, :method => :get  %>  
+                    
+                    <div style="clear:both"></div>
+                <% end %>
+                </div>
+                <br/>
+            <% end %>
+
+        </div>
+    
+    </div>
+    <div style="clear:both">&nbsp;</div>
+   
+    <% end  # ende der Stufen Schleife %>
 
     <div class="ueberschrift">Techniche Benutzer</div>
         <%= button_to "+", {:controller => "techbenutzers", :action => "new", :applikation_id => params[:applikation_id] },  method: :get %> 
