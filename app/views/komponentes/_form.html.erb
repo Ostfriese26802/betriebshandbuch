@@ -46,6 +46,11 @@
     <%= form.text_area :besonderheiten %>
   </div>
 
+<div class="field">
+    <%= form.label :stufe_id %>
+    <%= form.collection_select(:stufe_id,Stufe.where(kunde_id: Applikation.find(params[:applikation_id]).kunde_id),:id,:name, :selected => @komponente.stufe_id)%> 
+  </div>
+
   <div class="field">
     <%= form.label :applikation_id %>
     <%= form.collection_select(:applikation_id,Applikation.all,:id,:name, :selected => @komponente.applikation_id)%> 
@@ -53,7 +58,7 @@
 
   <div class="field">
     <%= form.label :server_id %>
-    <%= form.collection_select(:server_id,Server.all,:id,:name, :selected => @komponente.server_id)%> 
+    <%= form.collection_select(:server_id,Server.where(kunde_id: Applikation.find(params[:applikation_id]).kunde_id),:id,:name, :selected => @komponente.server_id)%> 
   </div>
 
 

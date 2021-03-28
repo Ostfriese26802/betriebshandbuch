@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :stuves
+  get 'stuves/new/:kunde_id', to: 'stuves#new'
+  get 'stuves/index/:kunde_id', to: 'stuves#index'
   resources :techbenutzers
   get 'techbenutzers/new/:applikation_id', to: 'techbenutzers#new'
   resources :supportmatrices
@@ -14,6 +17,8 @@ Rails.application.routes.draw do
   get 'referenzs/new/:applikation_id', to: 'referenzs#new'
   get 'referenzs/:id/edit/:applikation_id', to: 'referenzs#edit'
   resources :komponentes
+  get 'komponentes/new/:applikation_id', to: 'komponentes#new'
+  get 'komponentes/:id/edit/:applikation_id', to: 'komponentes#edit'
   get 'start/index', to: 'start#index'
   get 'start/index/:id', to: 'start#index'
   get 'start/index/:id/:applikation_id', to: 'start#index'

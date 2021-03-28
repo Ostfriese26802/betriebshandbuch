@@ -4,6 +4,7 @@ class KomponentesController < ApplicationController
   # GET /komponentes
   # GET /komponentes.json
   def index
+   
     @komponentes = Komponente.all
     @kundes = Kunde.all
   end
@@ -11,26 +12,30 @@ class KomponentesController < ApplicationController
   # GET /komponentes/1
   # GET /komponentes/1.json
   def show
+    
     @kundes = Kunde.all
   end
 
   # GET /komponentes/new
   def new
+    @kundes = Kunde.all
     @komponente = Komponente.new
   end
 
   # GET /komponentes/1/edit
   def edit
+    @kundes = Kunde.all
   end
 
   # POST /komponentes
   # POST /komponentes.json
   def create
+    @kundes = Kunde.all
     @komponente = Komponente.new(komponente_params)
 
     respond_to do |format|
       if @komponente.save
-        format.html { redirect_to @komponente, notice: 'Komponente was successfully created.' }
+        format.html { redirect_to "/start/index/#{Applikation.find(@komponente.applikation_id).kunde_id}/#{@komponente.applikation_id}", notice: 'Komponente was successfully created.' }
         format.json { render :show, status: :created, location: @komponente }
       else
         format.html { render :new }
@@ -42,9 +47,10 @@ class KomponentesController < ApplicationController
   # PATCH/PUT /komponentes/1
   # PATCH/PUT /komponentes/1.json
   def update
+    
     respond_to do |format|
       if @komponente.update(komponente_params)
-        format.html { redirect_to @komponente, notice: 'Komponente was successfully updated.' }
+        format.html { redirect_to "/start/index/#{Applikation.find(@komponente.applikation_id).kunde_id}/#{@komponente.applikation_id}" ,notice: 'Komponente was successfully updated.' }
         format.json { render :show, status: :ok, location: @komponente }
       else
         format.html { render :edit }
@@ -71,6 +77,6 @@ class KomponentesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def komponente_params
-      params.require(:komponente).permit(:name, :beschreibung, :installationspfad, :port, :start, :stop, :besonderheiten, :applikation_id, :server_id)
+      params.require(:komponente).permit(:name, :beschreibung, :installationspfad, :port, :start, :stop, :besonderheiten, :applikation_id, :server_id, :stufe_id)
     end
 end
