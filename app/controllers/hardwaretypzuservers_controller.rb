@@ -33,7 +33,7 @@ class HardwaretypzuserversController < ApplicationController
 
     respond_to do |format|
       if @hardwaretypzuserver.save
-        format.html { redirect_to @hardwaretypzuserver, notice: 'Hardwaretypzuserver was successfully created.' }
+        format.html { redirect_to "/start/index/#{Server.find(@hardwaretypzuserver.server_id).kunde_id}/#{Komponente.where(server_id: @hardwaretypzuserver.server_id).first.applikation_id}", notice: 'Hardwaretypzuserver was successfully created.' }
         format.json { render :show, status: :created, location: @hardwaretypzuserver }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class HardwaretypzuserversController < ApplicationController
     @kundes = Kunde.all
     respond_to do |format|
       if @hardwaretypzuserver.update(hardwaretypzuserver_params)
-        format.html { redirect_to @hardwaretypzuserver, notice: 'Hardwaretypzuserver was successfully updated.' }
+        format.html { redirect_to "/start/index/#{Server.find(@hardwaretypzuserver.server_id).kunde_id}/#{Komponente.where(server_id: @hardwaretypzuserver.server_id).first.applikation_id}", notice: 'Hardwaretypzuserver was successfully updated.' }
         format.json { render :show, status: :ok, location: @hardwaretypzuserver }
       else
         format.html { render :edit }
@@ -63,7 +63,7 @@ class HardwaretypzuserversController < ApplicationController
     @kundes = Kunde.all
     @hardwaretypzuserver.destroy
     respond_to do |format|
-      format.html { redirect_to hardwaretypzuservers_url, notice: 'Hardwaretypzuserver was successfully destroyed.' }
+      format.html { redirect_to request.referer, notice: 'Hardwaretypzuserver was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -76,6 +76,6 @@ class HardwaretypzuserversController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hardwaretypzuserver_params
-      params.require(:hardwaretypzuserver).permit(:hardwaretyp_id, :server_id, :wert)
+      params.require(:hardwaretypzuserver).permit(:hardwaretyp_id, :server_id, :wert, :name)
     end
 end

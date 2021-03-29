@@ -7,6 +7,7 @@
     <tr>
       <th>Hardwaretyp</th>
       <th>Server</th>
+      <th>Name</th>
       <th>Wert</th>
       <th colspan="3"></th>
     </tr>
@@ -15,8 +16,9 @@
   <tbody>
     <% @hardwaretypzuservers.each do |hardwaretypzuserver| %>
       <tr>
-        <td><%= hardwaretypzuserver.hardwaretyp_id %></td>
-        <td><%= hardwaretypzuserver.server_id %></td>
+        <td><%= Hardwaretyp.find(hardwaretypzuserver.hardwaretyp_id).name %></td>
+        <td><%= Server.find(hardwaretypzuserver.server_id).name %></td>
+        <td><%= hardwaretypzuserver.name %></td>
         <td><%= hardwaretypzuserver.wert %></td>
         <td><%= link_to 'Show', hardwaretypzuserver %></td>
         <td><%= link_to 'Edit', edit_hardwaretypzuserver_path(hardwaretypzuserver) %></td>

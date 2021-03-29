@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_29_062325) do
+ActiveRecord::Schema.define(version: 2021_03_29_185542) do
 
   create_table "applikations", force: :cascade do |t|
     t.string "name"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2021_03_29_062325) do
     t.string "wert"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
     t.index ["hardwaretyp_id"], name: "index_hardwaretypzuservers_on_hardwaretyp_id"
     t.index ["server_id"], name: "index_hardwaretypzuservers_on_server_id"
   end

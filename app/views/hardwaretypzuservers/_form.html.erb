@@ -18,7 +18,14 @@
 
   <div class="field">
     <%= form.label :server_id %>
-    <%= form.collection_select(:server_id,Server.all,:id,:name, :selected => @hardwaretypzuserver.server_id)%>
+   
+      <%= form.collection_select(:server_id,Server.all,:id,:name, :selected =>  params[:server_id])%>
+   
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
   </div>
 
   <div class="field">
