@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :hardwaretypzuservers
+  resources :hardwaretyps
   resources :stuves
   get 'stuves/new/:kunde_id', to: 'stuves#new'
   get 'stuves/index/:kunde_id', to: 'stuves#index'

@@ -1,0 +1,32 @@
+<%= form_with(model: hardwaretypzuserver, local: true) do |form| %>
+  <% if hardwaretypzuserver.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(hardwaretypzuserver.errors.count, "error") %> prohibited this hardwaretypzuserver from being saved:</h2>
+
+      <ul>
+        <% hardwaretypzuserver.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :hardwaretyp_id %>
+     <%= form.collection_select(:hardwaretyp_id,Hardwaretyp.all,:id,:name, :selected => @hardwaretypzuserver.hardwaretyp_id)%> 
+  </div>
+
+  <div class="field">
+    <%= form.label :server_id %>
+    <%= form.collection_select(:server_id,Server.all,:id,:name, :selected => @hardwaretypzuserver.server_id)%>
+  </div>
+
+  <div class="field">
+    <%= form.label :wert %>
+    <%= form.text_field :wert %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

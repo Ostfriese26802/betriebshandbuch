@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_23_201426) do
+ActiveRecord::Schema.define(version: 2021_03_29_062325) do
 
   create_table "applikations", force: :cascade do |t|
     t.string "name"
@@ -55,6 +55,22 @@ ActiveRecord::Schema.define(version: 2021_03_23_201426) do
     t.string "ticketgruppe"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "hardwaretyps", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "hardwaretypzuservers", force: :cascade do |t|
+    t.integer "hardwaretyp_id", null: false
+    t.integer "server_id", null: false
+    t.string "wert"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hardwaretyp_id"], name: "index_hardwaretypzuservers_on_hardwaretyp_id"
+    t.index ["server_id"], name: "index_hardwaretypzuservers_on_server_id"
   end
 
   create_table "komponentes", force: :cascade do |t|
@@ -154,6 +170,8 @@ ActiveRecord::Schema.define(version: 2021_03_23_201426) do
   add_foreign_key "applikations", "kundes"
   add_foreign_key "betriebssystems", "betriebssystemtyps"
   add_foreign_key "dienstleisters", "kundes"
+  add_foreign_key "hardwaretypzuservers", "hardwaretyps"
+  add_foreign_key "hardwaretypzuservers", "servers"
   add_foreign_key "komponentes", "applikations"
   add_foreign_key "komponentes", "servers"
   add_foreign_key "komponentes", "stuves"

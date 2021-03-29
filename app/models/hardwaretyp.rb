@@ -1,0 +1,2 @@
+class Hardwaretyp < ApplicationRecord
+end

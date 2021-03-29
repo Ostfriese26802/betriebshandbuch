@@ -1,0 +1,2 @@
+module HardwaretypzuserversHelper
+end

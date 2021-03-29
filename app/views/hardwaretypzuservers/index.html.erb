@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Hardwaretypzuservers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hardwaretyp</th>
+      <th>Server</th>
+      <th>Wert</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hardwaretypzuservers.each do |hardwaretypzuserver| %>
+      <tr>
+        <td><%= hardwaretypzuserver.hardwaretyp_id %></td>
+        <td><%= hardwaretypzuserver.server_id %></td>
+        <td><%= hardwaretypzuserver.wert %></td>
+        <td><%= link_to 'Show', hardwaretypzuserver %></td>
+        <td><%= link_to 'Edit', edit_hardwaretypzuserver_path(hardwaretypzuserver) %></td>
+        <td><%= link_to 'Destroy', hardwaretypzuserver, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hardwaretypzuserver', new_hardwaretypzuserver_path %>
