@@ -179,7 +179,28 @@
                     <%= Betriebssystem.find( Server.find(apser.server_id).betriebssystem_id ).name %>
                 </div>
                 <div style="clear:both"></div>
+                <div>Hardware <%= button_to "+", {:controller => "hardwaretypzuservers", :action => "new", :server_id => apser.server_id },  method: :get %> </div>
+                    <div class="hardware">
+                        <div class="typ"><b>Typ</b></div>
+                        <div class="name"><b>Name</b></div>
+                        <div class="wert"><b>Wert</b></div>
+                        <div></div>
+                        <div style="clear:both"></div>
+                        <% Hardwaretypzuserver.where(server_id: apser.server_id).each do |apserhw| %>
+                            <div class="typ"><%= Hardwaretyp.find(apserhw.hardwaretyp_id).name %></div>
+                            <div class="name"><%= apserhw.name %>&nbsp;</div>
+                            <div class="wert"><%= apserhw.wert %></div>
+                            <div style="float:left">
+                                <%= button_to "EDIT",{:controller => "hardwaretypzuservers", :action => "edit", :id => apserhw.id, :server_id => apserhw.server_id }, :method => :get  %>  
+                                 
+                            </div>
+                            <div style="float:left">
+                               <%= button_to "DEL",{:controller => "hardwaretypzuservers", :action => "destroy", :id => apserhw.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>   
+                            </div>
+                            <div style="clear:both"></div>
 
+                        <% end %>
+                    </div>
                 <div class="monitoringueberschrift">Monitoring</div>
                 <div class="monitoringbutton"><%= button_to "+", {:controller => "monitoringzusks", :action => "new", :server_id => apser.server_id },  method: :get %></div>
                 <div style="clear:both"></div>
