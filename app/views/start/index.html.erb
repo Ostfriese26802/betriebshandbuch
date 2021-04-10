@@ -1,14 +1,18 @@
 
 <% if params[:applikation_id].present? && params[:id].present? %>
-    <%= button_to "edit", {:controller => "applikations", :action => "edit", :id => params[:applikation_id] },  method: :get %> 
+    
+    <%= link_to '<i class="bi bi-pencil"></i>'.html_safe ,:controller => "applikations", :action => "edit", :id => params[:applikation_id]   %>
+     
+   
     <div class="ueberschrift"><%= @kundes.find(params[:id]).applikation.find(params[:applikation_id]).name %></div>
 
     <div class="beschreibung"><%= @kundes.find(params[:id]).applikation.find(params[:applikation_id]).beschreibung %></div>
 
 
-    <div class="ueberschrift">Referenzen / Links</div>
-    <%= button_to "+", {:controller => "referenzs", :action => "new", :applikation_id => params[:applikation_id] },  method: :get %>
-    
+    <div class="ueberschrift">Referenzen / Links
+        <%= link_to '<i class="bi bi-asterisk"></i>'.html_safe ,:controller => "referenzs", :action => "new", :id => params[:applikation_id]  %>
+           
+    </div>
         <div class="referenz">
             <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).referenz.each do |apre| %>
                 <div class="name">
@@ -22,10 +26,11 @@
                      <% end %>
                 </div>
                 <div style="float:right;">
-                    <%= button_to "edit", {:controller => "referenzs", :action => "edit", :id => apre.id, :applikation_id => params[:applikation_id] },  method: :get %> 
+                    <%= link_to '<i class="bi bi-pencil"></i>'.html_safe ,:controller => "referenzs", :action => "edit", :id => apre.id, :applikation_id => params[:applikation_id]  %>
+                       
                 </div>
                 <div style="float:right;">
-                    <%= button_to "DEL",{:controller => "referenzs", :action => "destroy", :id => apre.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %> 
+                     <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "referenzs", :action => "destroy", :id => apre.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
                 </div>
                 <div style="clear:both"></div>
             <% end %>
