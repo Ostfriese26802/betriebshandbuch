@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :benutzers
   resources :hardwaretypzuservers
   get 'hardwaretypzuservers/new/:server_id', to: 'hardwaretypzuservers#new'
   get 'hardwaretypzuservers/:id/edit', to: 'hardwaretypzuservers#edit'
