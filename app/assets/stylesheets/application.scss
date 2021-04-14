@@ -99,7 +99,7 @@ a:link {
 
  .komponente .titel{
    width: 15%;
-   font-weight: bold;
+   font-weight: normal;
    float:left;
    
 }
@@ -219,7 +219,8 @@ a:link {
 
  .stufe{
     width:100%;
-    border:1px solid #000000;
+   
+    border-top:1px solid #000000;
  }
 
  .stufe .ueberschrift{
@@ -244,4 +245,9 @@ a:link {
 .hardware .wert{
    float:left;
    width:20%;
+}
+
+.bi {
+   color:#000000;
+   
 }
