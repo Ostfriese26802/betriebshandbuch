@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/destroy'
   resources :benutzers
   resources :hardwaretypzuservers
   get 'hardwaretypzuservers/new/:server_id', to: 'hardwaretypzuservers#new'
@@ -43,5 +46,10 @@ Rails.application.routes.draw do
   resources :kundes
 
   root to:'start#index'
+
+  get "sessions/new", to: "sessions#new", 
+  get "signup", to: "benutzers#new", as: "signup"
+  get "login", to: "sessions#new", as: "login"
+  get "logout", to: "sessions#destroy", as: "logout"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

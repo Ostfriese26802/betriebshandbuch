@@ -1,5 +1,5 @@
 class BenutzersController < ApplicationController
-  before_action :set_benutzer, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_benutzer!, only: [:show, :edit, :update, :destroy]
 
   # GET /benutzers
   # GET /benutzers.json
