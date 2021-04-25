@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :users
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/login'
+  get 'sessions/welcome'
   resources :hardwaretypzuservers
   get 'hardwaretypzuservers/new/:server_id', to: 'hardwaretypzuservers#new'
   get 'hardwaretypzuservers/:id/edit', to: 'hardwaretypzuservers#edit'
@@ -41,6 +46,13 @@ Rails.application.routes.draw do
   resources :betriebssystemtyps
   resources :kundes
 
+
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  get 'welcome', to: 'sessions#welcome'
+  get 'logout', to: 'sessions#destroy'
+  get 'authorized', to: 'sessions#page_requires_login'
+  
   root to:'start#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
