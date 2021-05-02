@@ -1,4 +1,4 @@
-
+hier <%= User.find(session[:user_id]).rights %>
 <% if params[:applikation_id].present? && params[:id].present? %>
     <% if User.find(session[:user_id]).rights <= 1 %>
         <%= link_to '<i class="bi bi-pencil"></i>'.html_safe ,:controller => "applikations", :action => "edit", :id => params[:applikation_id]   %>
