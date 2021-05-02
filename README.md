@@ -1,24 +1,7 @@
-# README
+# Betriebshandbuch
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Wofür ist es gedacht
+Ein Betriebshandbuch dient dazu die aktuelle Struktur der Firma bzw der Kunden abzubilden.
+In vielen Fällen werden hierfür Wikis oder Textdokumente verwendet, was unter anderem den Nachteil hat das die Dokumentationen nicht einheitlich hinterlegt sind.
+Gleichzeitig bietet die Art der Dokumention keine Art von Verkünpfungen bzw in Teilen eine automatische Pflege.
