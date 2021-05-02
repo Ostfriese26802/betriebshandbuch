@@ -1,8 +1,8 @@
 
 <% if params[:applikation_id].present? && params[:id].present? %>
-    
-    <%= link_to '<i class="bi bi-pencil"></i>'.html_safe ,:controller => "applikations", :action => "edit", :id => params[:applikation_id]   %>
-     
+    <% if User.find(session[:user_id]).rights <= 1 %>
+        <%= link_to '<i class="bi bi-pencil"></i>'.html_safe ,:controller => "applikations", :action => "edit", :id => params[:applikation_id]   %>
+    <% end %>
    
     <div class="ueberschrift"><%= @kundes.find(params[:id]).applikation.find(params[:applikation_id]).name %></div>
 
@@ -10,8 +10,9 @@
 
 
     <div class="ueberschrift">Referenzen / Links
-        <%= link_to '<i class="bi bi-asterisk"></i>'.html_safe ,:controller => "referenzs", :action => "new", :id => params[:applikation_id]  %>
-           
+        <% if User.find(session[:user_id]).rights <= 1 %>
+            <%= link_to '<i class="bi bi-asterisk"></i>'.html_safe ,:controller => "referenzs", :action => "new", :id => params[:applikation_id]  %>
+        <% end %> 
     </div>
         <div class="referenz">
             <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).referenz.each do |apre| %>
@@ -25,20 +26,24 @@
                         <%= apre.link %>
                      <% end %>
                 </div>
-                <div style="float:right;">
-                    <%= link_to '<i class="bi bi-pencil"></i>'.html_safe ,:controller => "referenzs", :action => "edit", :id => apre.id, :applikation_id => params[:applikation_id]  %>
-                       
-                </div>
-                <div style="float:right;">
-                     <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "referenzs", :action => "destroy", :id => apre.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
-                </div>
+                <% if User.find(session[:user_id]).rights <= 1 %>
+                    <div style="float:right;">
+                        <%= link_to '<i class="bi bi-pencil"></i>'.html_safe ,:controller => "referenzs", :action => "edit", :id => apre.id, :applikation_id => params[:applikation_id]  %>
+                        
+                    </div>
+                    <div style="float:right;">
+                        <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "referenzs", :action => "destroy", :id => apre.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
+                    </div>
+                <% end %>
                 <div style="clear:both"></div>
             <% end %>
         </div>
 
     <div class="ueberschrift">Supportmatrix 
-        <%= button_to "Dienstleister +", {:controller => "supportmatrices", :action => "new", :applikation_id => params[:applikation_id], :was => "dienstleister" },  method: :get %>
-        <%= button_to "Fachgruppe +", {:controller => "supportmatrices", :action => "new", :applikation_id => params[:applikation_id], :was => "fachgruppe" },  method: :get %>
+        <% if User.find(session[:user_id]).rights <= 1 %>
+            <%= button_to "Dienstleister +", {:controller => "supportmatrices", :action => "new", :applikation_id => params[:applikation_id], :was => "dienstleister" },  method: :get %>
+            <%= button_to "Fachgruppe +", {:controller => "supportmatrices", :action => "new", :applikation_id => params[:applikation_id], :was => "fachgruppe" },  method: :get %>
+        <% end %>
     </div>
     
         
@@ -71,12 +76,14 @@
                     Servicezeiten: <%= Dienstleister.find(apsu.dienstleister_id).servicezeiten %>
                 <% end %>
             </div>
-            <div style="float:right;">
-                <%= link_to '<i class="bi bi-pencil"></i>'.html_safe ,:controller => "supportmatrices", :action => "edit", :id => apsu.id, :applikation_id => params[:applikation_id], :was => "dienstleister"   %>
-            </div>
-            <div style="float:right;">
-                <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "supportmatrices", :action => "destroy", :id => apsu.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
-            </div>
+            <% if User.find(session[:user_id]).rights <= 1 %>
+                <div style="float:right;">
+                    <%= link_to '<i class="bi bi-pencil"></i>'.html_safe ,:controller => "supportmatrices", :action => "edit", :id => apsu.id, :applikation_id => params[:applikation_id], :was => "dienstleister"   %>
+                </div>
+                <div style="float:right;">
+                    <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "supportmatrices", :action => "destroy", :id => apsu.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
+                </div>
+            <% end %>
             <div style="clear:both;"></div>
         <% end %>
        
@@ -91,7 +98,9 @@
         <div style="clear:both"></div>
 
         <div class="ueberschrift">Komponenten
-            <%= link_to '<i class="bi bi-asterisk"></i>'.html_safe ,:controller => "komponentes", :action => "new", :id => params[:applikation_id]  %>
+            <% if User.find(session[:user_id]).rights <= 1 %>
+                <%= link_to '<i class="bi bi-asterisk"></i>'.html_safe ,:controller => "komponentes", :action => "new", :id => params[:applikation_id]  %>
+            <% end %>
         </div>
          
         <% @kundes.find(params[:id]).applikation.find(params[:applikation_id]).komponente.where(stufe_id: apst.id).each do |apko| %>
@@ -101,8 +110,10 @@
                     Bezeichnung
                 </div>
                 <div class="inhalt">
-                    <%= apko.name %> (<%= apko.server.name %>)  
-                    <%= link_to '<i class="bi bi-pencil"></i>'.html_safe ,:controller => "komponentes", :action => "edit", :id => apko.id, :applikation_id => params[:applikation_id], :was => "dienstleister"   %>
+                    <%= apko.name %> (<%= apko.server.name %>)
+                    <% if User.find(session[:user_id]).rights <= 1 %>  
+                        <%= link_to '<i class="bi bi-pencil"></i>'.html_safe ,:controller => "komponentes", :action => "edit", :id => apko.id, :applikation_id => params[:applikation_id], :was => "dienstleister"   %>
+                    <% end %>
                 </div>
                 <div style="clear:both"></div>
                 <div class="was">
@@ -148,7 +159,9 @@
                 </div>
                 <div style="clear:both"></div>
                 <div class="monitoringueberschrift">Monitoring
-                    <%= link_to '<i class="bi bi-asterisk"></i>'.html_safe ,:controller => "monitoringzusks", :action => "new", :komponente_id => apko.id  %>
+                    <% if User.find(session[:user_id]).rights <= 1 %>
+                        <%= link_to '<i class="bi bi-asterisk"></i>'.html_safe ,:controller => "monitoringzusks", :action => "new", :komponente_id => apko.id  %>
+                    <% end %>
                 </div>
                 <div style="clear:both"></div>
                 <% 
@@ -166,10 +179,14 @@
                         <%= apmo.werte %>        
                     </div> 
                     <div style="float:right;margin-top:7px;">
-                        <%= link_to '<i class="bi bi-pencil"></i>'.html_safe , :controller => "monitoringzusks", :action => "edit", :id => apmo.id, :applikation_id => params[:applikation_id]  %>
+                        <% if User.find(session[:user_id]).rights <= 1 %>
+                            <%= link_to '<i class="bi bi-pencil"></i>'.html_safe , :controller => "monitoringzusks", :action => "edit", :id => apmo.id, :applikation_id => params[:applikation_id]  %>
+                        <% end %>
                     </div>
                     <div style="float:right;margin-top:7px;">
-                        <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "monitoringzusks", :action => "destroy", :id => apmo.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
+                        <% if User.find(session[:user_id]).rights <= 1 %>
+                            <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "monitoringzusks", :action => "destroy", :id => apmo.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
+                        <% end %>
                     </div>
                     <div style="clear:both"></div>
                     
@@ -198,7 +215,9 @@
                 </div>
                 <div style="clear:both"></div>
                 <div>Hardware 
-                    <%= link_to '<i class="bi bi-asterisk"></i>'.html_safe ,:controller => "hardwaretypzuservers", :action => "new", :server_id => apser.server_id  %>
+                    <% if User.find(session[:user_id]).rights <= 1 %>
+                        <%= link_to '<i class="bi bi-asterisk"></i>'.html_safe ,:controller => "hardwaretypzuservers", :action => "new", :server_id => apser.server_id  %>
+                    <% end %>
                 </div>
                     <div class="hardware">
                         <div class="typ"><b>Typ</b></div>
@@ -211,17 +230,25 @@
                             <div class="name"><%= apserhw.name %>&nbsp;</div>
                             <div class="wert"><%= apserhw.wert %></div>
                             <div style="float:left;margin-top:7px;">
-                                <%= link_to '<i class="bi bi-pencil"></i>'.html_safe , :controller => "hardwaretypzuservers", :action => "edit", :id => apserhw.id, :server_id => apserhw.server_id  %>
+                                <% if User.find(session[:user_id]).rights <= 1 %>
+                                    <%= link_to '<i class="bi bi-pencil"></i>'.html_safe , :controller => "hardwaretypzuservers", :action => "edit", :id => apserhw.id, :server_id => apserhw.server_id  %>
+                                <% end %>
                             </div>
                             <div style="float:left;margin-top:7px;">
-                                <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "hardwaretypzuservers", :action => "destroy", :id => apserhw.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
+                                <% if User.find(session[:user_id]).rights <= 1 %>
+                                    <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "hardwaretypzuservers", :action => "destroy", :id => apserhw.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
+                                <% end %>
                             </div>
                             
                             <div style="clear:both"></div>
 
                         <% end %>
                     </div>
-                <div class="monitoringueberschrift">Monitoring <%= link_to '<i class="bi bi-asterisk"></i>'.html_safe ,:controller => "monitoringzusks", :action => "new", :server_id => apser.server_id  %></div>
+                <div class="monitoringueberschrift">Monitoring 
+                    <% if User.find(session[:user_id]).rights <= 1 %>
+                        <%= link_to '<i class="bi bi-asterisk"></i>'.html_safe ,:controller => "monitoringzusks", :action => "new", :server_id => apser.server_id  %>
+                    <% end %>    
+                        </div>
                 <div style="clear:both"></div>
                 
                 <% 
@@ -238,10 +265,14 @@
                     </div> 
                     
                         <div style="float:left;margin-top:7px;">
-                            <%= link_to '<i class="bi bi-pencil"></i>'.html_safe , :controller => "monitoringzusks", :action => "edit", :id => apmo.id  %>
+                            <% if User.find(session[:user_id]).rights <= 1 %>
+                                <%= link_to '<i class="bi bi-pencil"></i>'.html_safe , :controller => "monitoringzusks", :action => "edit", :id => apmo.id  %>
+                            <% end %>
                         </div>
                         <div style="float:left;margin-top:7px;">
-                            <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "monitoringzusks", :action => "destroy", :id => apmo.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
+                            <% if User.find(session[:user_id]).rights <= 1 %>
+                                <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "monitoringzusks", :action => "destroy", :id => apmo.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
+                            <% end %>
                         </div>
                     <div style="clear:both"></div>
                 <% end %>
@@ -256,8 +287,10 @@
    
     <% end  # ende der Stufen Schleife %>
 
-    <div class="ueberschrift">Techniche Benutzer <%= link_to '<i class="bi bi-asterisk"></i>'.html_safe ,:controller => "techbenutzers", :action => "new", :id => params[:applikation_id]  %></div>
-       
+    <div class="ueberschrift">Techniche Benutzer 
+        <% if User.find(session[:user_id]).rights <= 1 %>
+            <%= link_to '<i class="bi bi-asterisk"></i>'.html_safe ,:controller => "techbenutzers", :action => "new", :id => params[:applikation_id]  %></div>
+        <% end %>
     <div class="techbenutzer">
         <div class="name">
                 Name
@@ -285,26 +318,37 @@
             <div class="beschreibung">
                 <%= apte.beschreibung %>
             </div>
-            <div style="float:left;margin-top:7px;">
-                <%= link_to '<i class="bi bi-pencil"></i>'.html_safe , :controller => "techbenutzers", :action => "edit", :id => apte.id  %>
-            </div>
-            <div style="float:left;margin-top:7px;">
-                <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "techbenutzers", :action => "destroy", :id => apte.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
-            </div>
+            <% if User.find(session[:user_id]).rights <= 1 %>
+                <div style="float:left;margin-top:7px;">
+                    <%= link_to '<i class="bi bi-pencil"></i>'.html_safe , :controller => "techbenutzers", :action => "edit", :id => apte.id  %>
+                </div>
+                <div style="float:left;margin-top:7px;">
+                    <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "techbenutzers", :action => "destroy", :id => apte.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
+                </div>
+            <% end %>
             <div style="clear:both"></div>
         <% end %>
 
     </div>
     
 <% else %>
-    <%= button_to "Applikation hinzufügen", {:controller => "applikations", :action => "new", :kunde_id => params[:id] },  method: :get %>
-    <%= button_to "Applikation Übersicht", {:controller => "applikations", :action => "index", :kunde_id => params[:id] },  method: :get %>
-    <%= button_to "Server hinzufügen", {:controller => "servers", :action => "new", :kunde_id => params[:id] },  method: :get %>
-    <%= button_to "Server Übersicht", {:controller => "servers", :action => "index", :kunde_id => params[:id] },  method: :get %>
-    <%= button_to "Dienstleister Übersicht", {:controller => "dienstleisters", :action => "index", :kunde_id => params[:id] },  method: :get %>
-    <%= button_to "Dienstleister hinzufügen", {:controller => "dienstleisters", :action => "new", :kunde_id => params[:id] },  method: :get %>
-    <%= button_to "Stufe Übersicht", {:controller => "stuves", :action => "index", :kunde_id => params[:id] },  method: :get %>
-    <%= button_to "Stufe hinzufügen", {:controller => "stuves", :action => "new", :kunde_id => params[:id] },  method: :get %>
+    <% if User.find(session[:user_id]).rights <= 1 %>
+        <%= button_to "Applikation hinzufügen", {:controller => "applikations", :action => "new", :kunde_id => params[:id] },  method: :get %>
+    <% end %>
+        <%= button_to "Applikation Übersicht", {:controller => "applikations", :action => "index", :kunde_id => params[:id] },  method: :get %>
+    <% if User.find(session[:user_id]).rights <= 1 %>
+        <%= button_to "Server hinzufügen", {:controller => "servers", :action => "new", :kunde_id => params[:id] },  method: :get %>
+    <% end %>
+        <%= button_to "Server Übersicht", {:controller => "servers", :action => "index", :kunde_id => params[:id] },  method: :get %>
+    
+        <%= button_to "Dienstleister Übersicht", {:controller => "dienstleisters", :action => "index", :kunde_id => params[:id] },  method: :get %>
+    <% if User.find(session[:user_id]).rights <= 1 %>
+        <%= button_to "Dienstleister hinzufügen", {:controller => "dienstleisters", :action => "new", :kunde_id => params[:id] },  method: :get %>
+    <% end %>
+        <%= button_to "Stufe Übersicht", {:controller => "stuves", :action => "index", :kunde_id => params[:id] },  method: :get %>
+    <% if User.find(session[:user_id]).rights <= 1 %>
+        <%= button_to "Stufe hinzufügen", {:controller => "stuves", :action => "new", :kunde_id => params[:id] },  method: :get %>
+    <% end %>
 <% end %>
 
 
