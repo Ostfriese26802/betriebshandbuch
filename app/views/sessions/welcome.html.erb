@@ -1,0 +1,11 @@
+<h1>Moin!</h1>
+<% if logged_in? %>
+    <h1>Du wurdest erfolgreich angemeldet, <%= current_user.username %></h1>
+
+<% else %>
+    <%= button_to "Login", '/login', method: :get%>
+<%end%>
+
+
+
+
