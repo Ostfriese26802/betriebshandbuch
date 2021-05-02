@@ -10,20 +10,24 @@ class KundesController < ApplicationController
   # GET /kundes/1
   # GET /kundes/1.json
   def show
+    @kundes = Kunde.all
   end
 
   # GET /kundes/new
   def new
+    @kundes = Kunde.all
     @kunde = Kunde.new
   end
 
   # GET /kundes/1/edit
   def edit
+    @kundes = Kunde.all
   end
 
   # POST /kundes
   # POST /kundes.json
   def create
+    @kundes = Kunde.all
     @kunde = Kunde.new(kunde_params)
 
     respond_to do |format|
@@ -40,6 +44,7 @@ class KundesController < ApplicationController
   # PATCH/PUT /kundes/1
   # PATCH/PUT /kundes/1.json
   def update
+    @kundes = Kunde.all
     respond_to do |format|
       if @kunde.update(kunde_params)
         format.html { redirect_to @kunde, notice: 'Kunde was successfully updated.' }
@@ -54,6 +59,7 @@ class KundesController < ApplicationController
   # DELETE /kundes/1
   # DELETE /kundes/1.json
   def destroy
+    @kundes = Kunde.all
     @kunde.destroy
     respond_to do |format|
       format.html { redirect_to kundes_url, notice: 'Kunde was successfully destroyed.' }

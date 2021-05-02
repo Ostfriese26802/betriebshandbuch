@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Monitorings</h1>
+<h1>Monitoring</h1>
 
 <table>
   <thead>
@@ -18,15 +18,15 @@
         <td><%= monitoring.name %></td>
         <td><%= monitoring.werte %></td>
         <td><%= monitoring.beschreibung %></td>
-        <td><%= link_to 'Show', monitoring %></td>
+        <td><%= link_to 'Anzeigen', monitoring %></td>
         <td>
           <% if  Monitoringzusk.where(monitoring_id: monitoring.id).count == 0 %>
-            <%= link_to 'Edit', edit_monitoring_path(monitoring) %>
+            <%= link_to 'Bearbeiten', edit_monitoring_path(monitoring) %>
           <% end %>
         </td>
         <td>
           <% if  Monitoringzusk.where(monitoring_id: monitoring.id).count == 0 %>
-           <%= link_to 'Destroy', monitoring, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+           <%= link_to 'Löschen', monitoring, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <% end %>
       </tr>
     <% end %>
@@ -35,4 +35,4 @@
 
 <br>
 
-<%= link_to 'New Monitoring', new_monitoring_path %>
+<%= link_to 'Neue Monitoring', new_monitoring_path %>

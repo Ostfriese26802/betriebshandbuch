@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Kundes</h1>
+<h1>Kunden</h1>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Kuerzel</th>
+      <th>Kürzel</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,9 +16,9 @@
       <tr>
         <td><%= kunde.name %></td>
         <td><%= kunde.kuerzel %></td>
-        <td><%= link_to 'Show', kunde %></td>
-        <td><%= link_to 'Edit', edit_kunde_path(kunde) %></td>
-        <td><%= link_to 'Destroy', kunde, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Anzeigen', kunde %></td>
+        <td><%= link_to 'Bearbeiten', edit_kunde_path(kunde) %></td>
+        <td><%= link_to 'Löschen', kunde, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Kunde', new_kunde_path %>
+<%= link_to 'Neuer Kunde', new_kunde_path %>

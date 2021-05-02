@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Fachgruppes</h1>
+<h1>Fachgruppen</h1>
 
 <table>
   <thead>
@@ -22,9 +22,9 @@
         <td><%= fachgruppe.bereitschaft %></td>
         <td><%= fachgruppe.email %></td>
         <td><%= fachgruppe.ticketgruppe %></td>
-        <td><%= link_to 'Show', fachgruppe %></td>
-        <td><%= link_to 'Edit', edit_fachgruppe_path(fachgruppe) %></td>
-        <td><%= link_to 'Destroy', fachgruppe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Anzeigen', fachgruppe %></td>
+        <td><%= link_to 'Bearbeiten', edit_fachgruppe_path(fachgruppe) %></td>
+        <td><%= link_to 'Löschen', fachgruppe, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Fachgruppe', new_fachgruppe_path %>
+<%= link_to 'Neue Fachgruppe', new_fachgruppe_path %>
