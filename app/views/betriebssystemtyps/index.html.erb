@@ -14,9 +14,9 @@
     <% @betriebssystemtyps.each do |betriebssystemtyp| %>
       <tr>
         <td><%= betriebssystemtyp.name %></td>
-        <td><%= link_to 'Show', betriebssystemtyp %></td>
-        <td><%= link_to 'Edit', edit_betriebssystemtyp_path(betriebssystemtyp) %></td>
-        <td><%= link_to 'Destroy', betriebssystemtyp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Anzeigen', betriebssystemtyp %></td>
+        <td><%= link_to 'Bearbeiten', edit_betriebssystemtyp_path(betriebssystemtyp) %></td>
+        <td><%= link_to 'Löschen', betriebssystemtyp, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Betriebssystemtyp', new_betriebssystemtyp_path %>
+<%= link_to 'Neu Betriebssystemtyp', new_betriebssystemtyp_path %>

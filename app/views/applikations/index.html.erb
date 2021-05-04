@@ -23,12 +23,12 @@
         <td><%= applikation.name %></td>
         <td><%= applikation.beschreibung %></td>
         <td><%= Kunde.find(applikation.kunde_id).name %></td>
-        <td><%= link_to 'Show', applikation %></td>
-        <td><%= link_to 'Edit', edit_applikation_path(applikation) %></td>
+        <td><%= link_to 'Anzeigen', applikation %></td>
+        <td><%= link_to 'Bearbeiten', edit_applikation_path(applikation) %></td>
         <td>
           <%  # wenn es angehängte Komponenten gibt kann die Applikation niht gelöscht werden 
             if  applikation.komponente.count  == 0 %>
-           <%= link_to 'Destroy', applikation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+           <%= link_to 'Löschen', applikation, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
           <% else %>
             Es gibt noch Komponenten
           <% end %>
@@ -39,4 +39,4 @@
 
 <br>
 
-<%= link_to 'New Applikation', new_applikation_path %>
+<%= link_to 'Neue Applikation', new_applikation_path %>

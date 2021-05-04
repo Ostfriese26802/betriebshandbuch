@@ -26,11 +26,11 @@
         <td><%= dienstleister.bereitschaftsnummer %></td>
         <td><%= dienstleister.servicezeiten %></td>
         <td><%= dienstleister.email %></td>
-        <td><%= link_to 'Show', dienstleister %></td>
-        <td><%= link_to 'Edit', edit_dienstleister_path(dienstleister) %></td>
+        <td><%= link_to 'Anzeigen', dienstleister %></td>
+        <td><%= link_to 'Bearbeiten', edit_dienstleister_path(dienstleister) %></td>
         <td>
           <% if Supportmatrix.where(dienstleister_id: dienstleister.id).count == 0 %>
-            <%= link_to 'Destroy', dienstleister, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Löschen', dienstleister, method: :delete, data: { confirm: 'Sind Sie sicher?' } %>
           <% else %>
             Es ist noch mit eine Applikation verknüpft
           <% end %>
@@ -42,4 +42,4 @@
 
 <br>
 
-<%= link_to 'New Dienstleister', new_dienstleister_path %>
+<%= link_to 'Neuer Dienstleister', new_dienstleister_path %>

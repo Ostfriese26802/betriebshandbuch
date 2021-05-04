@@ -20,9 +20,9 @@
         <td><%= Server.find(hardwaretypzuserver.server_id).name %></td>
         <td><%= hardwaretypzuserver.name %></td>
         <td><%= hardwaretypzuserver.wert %></td>
-        <td><%= link_to 'Show', hardwaretypzuserver %></td>
-        <td><%= link_to 'Edit', edit_hardwaretypzuserver_path(hardwaretypzuserver) %></td>
-        <td><%= link_to 'Destroy', hardwaretypzuserver, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Aneigen', hardwaretypzuserver %></td>
+        <td><%= link_to 'Bearbeiten', edit_hardwaretypzuserver_path(hardwaretypzuserver) %></td>
+        <td><%= link_to 'Löschen', hardwaretypzuserver, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Hardwaretypzuserver', new_hardwaretypzuserver_path %>
+<%= link_to 'Neue Hardwaretypzuserver', new_hardwaretypzuserver_path %>

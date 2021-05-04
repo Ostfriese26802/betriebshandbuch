@@ -16,9 +16,9 @@
       <tr>
         <td><%= Betriebssystemtyp.find(betriebssystem.betriebssystemtyp_id).name %></td>
         <td><%= betriebssystem.name %></td>
-        <td><%= link_to 'Show', betriebssystem %></td>
-        <td><%= link_to 'Edit', edit_betriebssystem_path(betriebssystem) %></td>
-        <td><%= link_to 'Destroy', betriebssystem, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Anzeigen', betriebssystem %></td>
+        <td><%= link_to 'Bearbeiten', edit_betriebssystem_path(betriebssystem) %></td>
+        <td><%= link_to 'Löschen', betriebssystem, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Betriebssystem', new_betriebssystem_path %>
+<%= link_to 'Neues Betriebssystem', new_betriebssystem_path %>
