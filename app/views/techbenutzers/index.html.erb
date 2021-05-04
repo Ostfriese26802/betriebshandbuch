@@ -20,9 +20,9 @@
         <td><%= techbenutzer.kennwort %></td>
         <td><%= Applikation.find(techbenutzer.applikation_id).name %></td>
          <td><%= techbenutzer.beschreibung %></td>
-        <td><%= link_to 'Show', techbenutzer %></td>
-        <td><%= link_to 'Edit', edit_techbenutzer_path(techbenutzer) %></td>
-        <td><%= link_to 'Destroy', techbenutzer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Anzeigen', techbenutzer %></td>
+        <td><%= link_to 'Bearbeiten', edit_techbenutzer_path(techbenutzer) %></td>
+        <td><%= link_to 'Löschen', techbenutzer, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Techbenutzer', new_techbenutzer_path %>
+<%= link_to 'Neuer Techbenutzer', new_techbenutzer_path %>

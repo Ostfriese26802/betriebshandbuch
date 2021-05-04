@@ -20,9 +20,9 @@
         <td><%= monitoringzusk.komponente_id %></td>
         <td><%= monitoringzusk.werte %></td>
         <td><%= monitoringzusk.monitoring_id %></td>
-        <td><%= link_to 'Show', monitoringzusk %></td>
-        <td><%= link_to 'Edit', edit_monitoringzusk_path(monitoringzusk) %></td>
-        <td><%= link_to 'Destroy', monitoringzusk, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Anzeigen', monitoringzusk %></td>
+        <td><%= link_to 'Bearbeiten', edit_monitoringzusk_path(monitoringzusk) %></td>
+        <td><%= link_to 'Löschen', monitoringzusk, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Monitoringzusk', new_monitoringzusk_path %>
+<%= link_to 'Neue Monitoringzusk', new_monitoringzusk_path %>

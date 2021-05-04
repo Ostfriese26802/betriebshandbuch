@@ -22,12 +22,12 @@
         <td><%= Kunde.find(server.kunde_id).name %></td>
         <td><%= Betriebssystem.find(server.betriebssystem_id).name %></td>
         <td><%= server.archiviert %></td>
-        <td><%= link_to 'Show', server %></td>
-        <td><%= link_to 'Edit', edit_server_path(server) %></td>
+        <td><%= link_to 'Anzeigen', server %></td>
+        <td><%= link_to 'Bearbeiten', edit_server_path(server) %></td>
         <td>
           <% #wenn es noch angehängte Komponenten gibt darf der Server nicht gelöscht werden
             if Komponente.where(server_id: server.id).count == 0 %>
-          <%= link_to 'Destroy', server, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%= link_to 'Löschen', server, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
           <% else %>
             Es gibt noch verbundene Komponenten
           <% end %>
@@ -38,4 +38,4 @@
 
 <br>
 
-<%= link_to 'New Server', new_server_path %>
+<%= link_to 'Neuer Server', new_server_path %>

@@ -18,9 +18,9 @@
         <td><%= referenz.name %></td>
         <td><%= referenz.link %></td>
         <td><%= referenz.applikation_id %></td>
-        <td><%= link_to 'Show', referenz %></td>
-        <td><%= link_to 'Edit', edit_referenz_path(referenz) %></td>
-        <td><%= link_to 'Destroy', referenz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Anzeigen', referenz %></td>
+        <td><%= link_to 'Bearbeiten', edit_referenz_path(referenz) %></td>
+        <td><%= link_to 'Löschen', referenz, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Referenz', new_referenz_path %>
+<%= link_to 'Neue Referenz', new_referenz_path %>

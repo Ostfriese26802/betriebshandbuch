@@ -18,9 +18,9 @@
         <td><%= stufe.name %></td>
         <td><%= stufe.beschreibung %></td>
         <td><%= Kunde.find(stufe.kunde_id).name %></td>
-        <td><%= link_to 'Show', stufe %></td>
-        <td><%= link_to 'Edit', edit_stufe_path(stufe) %></td>
-        <td><%= link_to 'Destroy', stufe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Anzeigen', stufe %></td>
+        <td><%= link_to 'Bearbeiten', edit_stufe_path(stufe) %></td>
+        <td><%= link_to 'Löschen', stufe, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Stufe', new_stufe_path %>
+<%= link_to 'Neue Stufe', new_stufe_path %>
