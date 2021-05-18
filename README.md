@@ -44,4 +44,11 @@ Anlage und Verwaltung von neuen Kunden.
 
 Unter jedem Kunden können die jeweiligen Applikationen, Server, Staging Stufen(PROD,TEST),Technische Benutzer  und Dienstleister angelegt werden. Letzteres muss unter jedem Kunden angelegt werden, da es gegebenenfalls andere Ansprechpartner, Servicenummern oder Servicezeiten gibt.
 
+##### Beispielbilder
+![Beschreibung](http://www.itbasic.de/wp-content/uploads/2021/05/bfh-1-e1621366865753.png)
+
+![Staging Stufe](http://www.itbasic.de/wp-content/uploads/2021/05/bfh-2-e1621366890179.png)
+
+![Technische Benutzer](http://www.itbasic.de/wp-content/uploads/2021/05/bfh-3-e1621366880562.png)
+
 
