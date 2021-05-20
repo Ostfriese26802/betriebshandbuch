@@ -3,4 +3,4 @@
 <%= render 'form', supportmatrix: @supportmatrix %>
 
 <%= link_to 'Anzeigen', @supportmatrix %> |
-<%= link_to 'Zurück', supportmatrices_path %>
+<%= link_to 'Zurück', request.referer %>

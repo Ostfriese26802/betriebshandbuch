@@ -3,4 +3,4 @@
 <%= render 'form', stufe: @stufe %>
 
 <%= link_to 'Anzeigen', @stufe %> |
-<%= link_to 'Zurück', stuves_path %>
+<%= link_to 'Zurück', request.referer %>

@@ -32,7 +32,7 @@
                         
                     </div>
                     <div style="float:right;">
-                        <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "referenzs", :action => "destroy", :id => apre.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
+                        <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "referenzs", :action => "destroy", :id => apre.id }, data: { confirm: 'Sind Sie sicher?' }, :method => :delete  %>
                     </div>
                 <% end %>
                 <div style="clear:both"></div>
@@ -81,7 +81,7 @@
                     <%= link_to '<i class="bi bi-pencil"></i>'.html_safe ,:controller => "supportmatrices", :action => "edit", :id => apsu.id, :applikation_id => params[:applikation_id], :was => "dienstleister"   %>
                 </div>
                 <div style="float:right;">
-                    <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "supportmatrices", :action => "destroy", :id => apsu.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
+                    <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "supportmatrices", :action => "destroy", :id => apsu.id }, data: { confirm: 'Sind Sie sicher?' }, :method => :delete  %>
                 </div>
             <% end %>
             <div style="clear:both;"></div>
@@ -185,7 +185,7 @@
                     </div>
                     <div style="float:right;margin-top:7px;">
                         <% if User.find(session[:user_id]).rights <= 1 %>
-                            <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "monitoringzusks", :action => "destroy", :id => apmo.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
+                            <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "monitoringzusks", :action => "destroy", :id => apmo.id }, data: { confirm: 'Sind Sie sicher?' }, :method => :delete  %>
                         <% end %>
                     </div>
                     <div style="clear:both"></div>
@@ -236,7 +236,7 @@
                             </div>
                             <div style="float:left;margin-top:7px;">
                                 <% if User.find(session[:user_id]).rights <= 1 %>
-                                    <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "hardwaretypzuservers", :action => "destroy", :id => apserhw.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
+                                    <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "hardwaretypzuservers", :action => "destroy", :id => apserhw.id }, data: { confirm: 'Sind Sie sicher?' }, :method => :delete  %>
                                 <% end %>
                             </div>
                             
@@ -271,7 +271,7 @@
                         </div>
                         <div style="float:left;margin-top:7px;">
                             <% if User.find(session[:user_id]).rights <= 1 %>
-                                <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "monitoringzusks", :action => "destroy", :id => apmo.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
+                                <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "monitoringzusks", :action => "destroy", :id => apmo.id }, data: { confirm: 'Sind Sie sicher?' }, :method => :delete  %>
                             <% end %>
                         </div>
                     <div style="clear:both"></div>
@@ -324,7 +324,7 @@
                     <%= link_to '<i class="bi bi-pencil"></i>'.html_safe , :controller => "techbenutzers", :action => "edit", :id => apte.id  %>
                 </div>
                 <div style="float:left;margin-top:7px;">
-                    <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "techbenutzers", :action => "destroy", :id => apte.id }, data: { confirm: 'Are you sure?' }, :method => :delete  %>
+                    <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "techbenutzers", :action => "destroy", :id => apte.id }, data: { confirm: 'Sind Sie sicher?' }, :method => :delete  %>
                 </div>
             <% end %>
             <div style="clear:both"></div>

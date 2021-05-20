@@ -61,5 +61,7 @@ Unter jedem Kunden können die jeweiligen Applikationen, Server, Staging Stufen(
 
 ###### Änderungen
 
-20.05.2021 Geplante Aufgaben können in der Applikation hinterlegt werden.
+20.05.2021  Geplante Aufgaben können in der Applikation hinterlegt werden.
+            Fehler 12 Zurück Button behoben
+            Textliche Anpassung
 

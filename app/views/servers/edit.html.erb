@@ -3,4 +3,4 @@
 <%= render 'form', server: @server %>
 
 <%= link_to 'Anzeigen', @server %> |
-<%= link_to 'Zurück', servers_path %>
+<%= link_to 'Zurück', request.referer %>
