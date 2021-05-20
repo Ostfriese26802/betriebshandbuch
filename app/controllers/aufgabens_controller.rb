@@ -33,7 +33,7 @@ class AufgabensController < ApplicationController
 
     respond_to do |format|
       if @aufgaben.save
-        format.html { redirect_to @aufgaben, notice: 'Aufgaben was successfully created.' }
+        format.html { redirect_to "/start/index/#{Applikation.find(@aufgaben.applikation_id).kunde_id}/#{@aufgaben.applikation_id}", notice: 'Aufgabe wurde hinzufügt.' }
         format.json { render :show, status: :created, location: @aufgaben }
       else
         format.html { render :new }
@@ -48,7 +48,8 @@ class AufgabensController < ApplicationController
     @kundes = Kunde.all
     respond_to do |format|
       if @aufgaben.update(aufgaben_params)
-        format.html { redirect_to @aufgaben, notice: 'Aufgaben was successfully updated.' }
+        format.html { redirect_to "/start/index/#{Applikation.find(@aufgaben.applikation_id).kunde_id}/#{@aufgaben.applikation_id}" ,notice: 'Die Aufgabe wurde aktualisiert.' }
+        format.html { redirect_to @aufgaben, notice: 'Die Aufgabe wurde aktualisiert.' }
         format.json { render :show, status: :ok, location: @aufgaben }
       else
         format.html { render :edit }
@@ -63,7 +64,7 @@ class AufgabensController < ApplicationController
     @kundes = Kunde.all
     @aufgaben.destroy
     respond_to do |format|
-      format.html { redirect_to aufgabens_url, notice: 'Aufgaben was successfully destroyed.' }
+      format.html { redirect_to request.referrer, notice: 'Die Aufgabe wurde gelöscht.' }
       format.json { head :no_content }
     end
   end
