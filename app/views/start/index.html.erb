@@ -289,8 +289,9 @@
 
     <div class="ueberschrift">Techniche Benutzer 
         <% if User.find(session[:user_id]).rights <= 1 %>
-            <%= link_to '<i class="bi bi-asterisk"></i>'.html_safe ,:controller => "techbenutzers", :action => "new", :id => params[:applikation_id]  %></div>
+            <%= link_to '<i class="bi bi-asterisk"></i>'.html_safe ,:controller => "techbenutzers", :action => "new", :id => params[:applikation_id]  %>
         <% end %>
+    </div>
     <div class="techbenutzer">
         <div class="name">
                 Name
@@ -329,7 +330,51 @@
             <div style="clear:both"></div>
         <% end %>
 
+        <div class="ueberschrift">geplante Aufgaben 
+        <% if User.find(session[:user_id]).rights <= 1 %>
+            <%= link_to '<i class="bi bi-asterisk"></i>'.html_safe ,:controller => "aufgabens", :action => "new", :applikation_id => params[:applikation_id]  %>
+        <% end %>
+        </div>
+
+     
+        <div class="aufgaben">
+            <div class="name">
+                Name
+            </div>
+            <div class="zeitpunkt">
+                Zeitpunkt der Ausführung
+            </div>
+            <div class="beschreibung">
+                Beschreibung
+            </div>
+             <div style="clear:both"></div>
+            <% # Ausgabe der Aufgaben
+            Aufgaben.where(applikation_id: params[:applikation_id]).each do |apau|
+            %>  
+                <div class="name">
+                    <%= apau.name %>
+                </div>
+                <div class="zeitpunkt">
+                    <%= apau.zeitpunkt %>
+                </div>
+                <div class="beschreibung">
+                     <%= apau.beschreibung %>
+                </div>
+                <% if User.find(session[:user_id]).rights <= 1 %>
+                <div style="float:left;margin-top:7px;">
+                    <%= link_to '<i class="bi bi-pencil"></i>'.html_safe , :controller => "aufgabens", :action => "edit", :id => apau.id  %>
+                </div>
+                <div style="float:left;margin-top:7px;">
+                    <%= link_to '<i class="bi bi-trash"></i>'.html_safe , {:controller => "aufgabens", :action => "destroy", :id => apau.id }, data: { confirm: 'Sind Sie sicher?' }, :method => :delete  %>
+                </div>
+            <% end %>
+                 <div style="clear:both"></div>
+            <% end %>
+        </div>
     </div>
+
+    
+
     
 <% else %>
     <% if User.find(session[:user_id]).rights <= 1 %>

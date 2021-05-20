@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_190924) do
+ActiveRecord::Schema.define(version: 2021_05_18_200629) do
 
   create_table "applikations", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2021_04_16_190924) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["kunde_id"], name: "index_applikations_on_kunde_id"
+  end
+
+  create_table "aufgabens", force: :cascade do |t|
+    t.string "name"
+    t.string "zeitpunkt"
+    t.text "beschreibung"
+    t.integer "applikation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["applikation_id"], name: "index_aufgabens_on_applikation_id"
   end
 
   create_table "betriebssystems", force: :cascade do |t|
@@ -177,6 +187,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_190924) do
   end
 
   add_foreign_key "applikations", "kundes"
+  add_foreign_key "aufgabens", "applikations"
   add_foreign_key "betriebssystems", "betriebssystemtyps"
   add_foreign_key "dienstleisters", "kundes"
   add_foreign_key "hardwaretypzuservers", "hardwaretyps"

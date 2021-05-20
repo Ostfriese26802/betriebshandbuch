@@ -4,26 +4,31 @@ class BetriebssystemsController < ApplicationController
   # GET /betriebssystems
   # GET /betriebssystems.json
   def index
+    @kundes = Kunde.all
     @betriebssystems = Betriebssystem.all
   end
 
   # GET /betriebssystems/1
   # GET /betriebssystems/1.json
   def show
+    @kundes = Kunde.all
   end
 
   # GET /betriebssystems/new
   def new
+    @kundes = Kunde.all
     @betriebssystem = Betriebssystem.new
   end
 
   # GET /betriebssystems/1/edit
   def edit
+    @kundes = Kunde.all
   end
 
   # POST /betriebssystems
   # POST /betriebssystems.json
   def create
+    @kundes = Kunde.all
     @betriebssystem = Betriebssystem.new(betriebssystem_params)
 
     respond_to do |format|
@@ -40,6 +45,7 @@ class BetriebssystemsController < ApplicationController
   # PATCH/PUT /betriebssystems/1
   # PATCH/PUT /betriebssystems/1.json
   def update
+    @kundes = Kunde.all
     respond_to do |format|
       if @betriebssystem.update(betriebssystem_params)
         format.html { redirect_to @betriebssystem, notice: 'Betriebssystem was successfully updated.' }
@@ -54,6 +60,7 @@ class BetriebssystemsController < ApplicationController
   # DELETE /betriebssystems/1
   # DELETE /betriebssystems/1.json
   def destroy
+    @kundes = Kunde.all
     @betriebssystem.destroy
     respond_to do |format|
       format.html { redirect_to betriebssystems_url, notice: 'Betriebssystem was successfully destroyed.' }

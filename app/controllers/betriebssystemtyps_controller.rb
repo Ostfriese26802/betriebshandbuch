@@ -4,26 +4,31 @@ class BetriebssystemtypsController < ApplicationController
   # GET /betriebssystemtyps
   # GET /betriebssystemtyps.json
   def index
+    @kundes = Kunde.all
     @betriebssystemtyps = Betriebssystemtyp.all
   end
 
   # GET /betriebssystemtyps/1
   # GET /betriebssystemtyps/1.json
   def show
+    @kundes = Kunde.all
   end
 
   # GET /betriebssystemtyps/new
   def new
+    @kundes = Kunde.all
     @betriebssystemtyp = Betriebssystemtyp.new
   end
 
   # GET /betriebssystemtyps/1/edit
   def edit
+    @kundes = Kunde.all
   end
 
   # POST /betriebssystemtyps
   # POST /betriebssystemtyps.json
   def create
+    @kundes = Kunde.all
     @betriebssystemtyp = Betriebssystemtyp.new(betriebssystemtyp_params)
 
     respond_to do |format|
@@ -40,6 +45,7 @@ class BetriebssystemtypsController < ApplicationController
   # PATCH/PUT /betriebssystemtyps/1
   # PATCH/PUT /betriebssystemtyps/1.json
   def update
+    @kundes = Kunde.all
     respond_to do |format|
       if @betriebssystemtyp.update(betriebssystemtyp_params)
         format.html { redirect_to @betriebssystemtyp, notice: 'Betriebssystemtyp was successfully updated.' }
@@ -54,6 +60,7 @@ class BetriebssystemtypsController < ApplicationController
   # DELETE /betriebssystemtyps/1
   # DELETE /betriebssystemtyps/1.json
   def destroy
+    @kundes = Kunde.all
     @betriebssystemtyp.destroy
     respond_to do |format|
       format.html { redirect_to betriebssystemtyps_url, notice: 'Betriebssystemtyp was successfully destroyed.' }

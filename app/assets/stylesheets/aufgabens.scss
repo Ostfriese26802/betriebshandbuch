@@ -1,0 +1,25 @@
+// Place all the styles related to the aufgabens controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.aufgaben{
+    width: 100%;
+    font-size: 12px;
+ 
+  }
+
+  .aufgaben .name{
+    width: 20%;
+    float:left;
+  }
+
+
+  .aufgaben .zeitpunkt{
+    width: 20%;
+    float:left;
+  }
+
+  .aufgaben .beschreibung{
+    width: 20%;
+    float:left;
+  }

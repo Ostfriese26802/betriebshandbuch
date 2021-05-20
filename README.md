@@ -38,6 +38,12 @@ prüft per http Check die angegebene url und den Port auf Erreichbarkeit
 ##### Hardwaretyp
 Welche Hardware kann später bei den Servern hinterlegt werden, zum Beispiel Festplatte, CPU etc.
 
+##### Betriebssystemtyp
+Welche Betriebssystem Arten wie Linux, Windows, Freeos werden eingesetzt
+
+##### Betriebssystem
+Festlegen der Betriebssysteme, diese Auswahl steht bei Anlage und Bearbeitung von Servern zur Verfügung.
+
 ##### Kunden
 Anlage und Verwaltung von neuen Kunden.
 
@@ -51,4 +57,9 @@ Unter jedem Kunden können die jeweiligen Applikationen, Server, Staging Stufen(
 
 ![Technische Benutzer](http://www.itbasic.de/wp-content/uploads/2021/05/bfh-3-e1621366880562.png)
 
+
+
+###### Änderungen
+
+20.05.2021 Geplante Aufgaben können in der Applikation hinterlegt werden.
 

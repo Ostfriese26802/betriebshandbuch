@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :aufgabens
+  get 'aufgabens/new/:applikation_id', to: 'aufgabens#new'
+  
   resources :users
   
   get 'sessions/new'

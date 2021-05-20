@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Aufgabens</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Zeitpunkt</th>
+      <th>Beschreibung</th>
+      <th>Applikation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @aufgabens.each do |aufgaben| %>
+      <tr>
+        <td><%= aufgaben.name %></td>
+        <td><%= aufgaben.zeitpunkt %></td>
+        <td><%= aufgaben.beschreibung %></td>
+        <td><%= aufgaben.applikation_id %></td>
+        <td><%= link_to 'Anzeigen', aufgaben %></td>
+        <td><%= link_to 'Bearbeiten', edit_aufgaben_path(aufgaben) %></td>
+        <td><%= link_to 'Löschen', aufgaben, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Neue Aufgaben', new_aufgaben_path %>
