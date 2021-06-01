@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Komponententyps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @komponententyps.each do |komponententyp| %>
+      <tr>
+        <td><%= komponententyp.name %></td>
+        <td><%= link_to 'Anzeigen', komponententyp %></td>
+        <td><%= link_to 'Bearbeiten', edit_komponententyp_path(komponententyp) %></td>
+        <td><%= link_to 'Löschen', komponententyp, method: :delete, data: { confirm: 'Sind Sie sicher?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Neuer Komponententyp', new_komponententyp_path %>

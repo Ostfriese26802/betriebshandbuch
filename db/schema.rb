@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_18_200629) do
+ActiveRecord::Schema.define(version: 2021_06_01_195030) do
 
   create_table "applikations", force: :cascade do |t|
     t.string "name"
@@ -82,6 +82,12 @@ ActiveRecord::Schema.define(version: 2021_05_18_200629) do
     t.string "name"
     t.index ["hardwaretyp_id"], name: "index_hardwaretypzuservers_on_hardwaretyp_id"
     t.index ["server_id"], name: "index_hardwaretypzuservers_on_server_id"
+  end
+
+  create_table "komponententyps", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "komponentes", force: :cascade do |t|

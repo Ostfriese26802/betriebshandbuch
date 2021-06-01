@@ -1,0 +1,2 @@
+module KomponententypsHelper
+end

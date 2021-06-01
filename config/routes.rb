@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :komponententyps
   resources :aufgabens
   get 'aufgabens/new/:applikation_id', to: 'aufgabens#new'
   
