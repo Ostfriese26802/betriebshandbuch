@@ -16,6 +16,11 @@
     <%= form.text_field :name %>
   </div>
 
+<div class="field">
+   <%= form.label :komponententyp_id %>
+   <%= form.collection_select(:komponententyp_id,Komponententyp.all,:id,:name, :selected => @komponente.komponententyp_id)%> 
+  </div>
+
   <div class="field">
     <%= form.label :beschreibung %>
     <%= form.text_area :beschreibung %>

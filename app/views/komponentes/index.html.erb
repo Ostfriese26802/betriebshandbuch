@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Komponententyp</th>
       <th>Beschreibung</th>
       <th>Installationspfad</th>
       <th>Port</th>
@@ -23,7 +24,9 @@
     <% @komponentes.each do |komponente| %>
       <tr>
         <td><%= komponente.name %></td>
+        
         <td><%= komponente.beschreibung %></td>
+        <td><%= komponente.komponententyp_id %></td>
         <td><%= komponente.installationspfad %></td>
         <td><%= komponente.port %></td>
         <td><%= komponente.start %></td>

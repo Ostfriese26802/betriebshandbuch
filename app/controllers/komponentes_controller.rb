@@ -77,6 +77,6 @@ class KomponentesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def komponente_params
-      params.require(:komponente).permit(:name, :beschreibung, :installationspfad, :port, :start, :stop, :besonderheiten, :applikation_id, :server_id, :stufe_id)
+      params.require(:komponente).permit(:name, :beschreibung, :installationspfad, :port, :start, :stop, :besonderheiten, :applikation_id, :server_id, :stufe_id, :komponententyp_id)
     end
 end
