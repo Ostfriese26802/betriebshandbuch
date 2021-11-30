@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @komponentenservice.name %>
+</p>
+
+<p>
+  <strong>Komponente:</strong>
+  <%= @komponentenservice.komponente_id %>
+</p>
+
+<p>
+  <strong>Beschreibung:</strong>
+  <%= @komponentenservice.beschreibung %>
+</p>
+
+<%= link_to 'Edit', edit_komponentenservice_path(@komponentenservice) %> |
+<%= link_to 'Back', komponentenservices_path %>
